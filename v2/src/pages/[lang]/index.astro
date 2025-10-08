@@ -1,0 +1,38 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import { getLangFromUrl, useTranslations, LANGUAGES_KEYS } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+export async function getStaticPaths() {
+  return LANGUAGES_KEYS.map((lang) => ({ params: { lang } }));
+}
+---
+
+<Layout title={t.site.title} description={t.site.description} lang={lang}>
+  <section class="hero bg-base-200 rounded-box">
+    <div class="hero-content text-center">
+      <div class="max-w-2xl">
+        <h1 class="text-3xl font-bold">{t.home.welcome}</h1>
+        <p class="py-4">{t.home.p1}</p>
+        <p class="py-2">{t.home.p2}</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="mt-6">
+    <p class="font-semibold">{t.home.p3}</p>
+    <ul class="menu bg-base-100 rounded-box shadow-sm mt-2">
+      <li><span>{t.home.p3_0} <code>src/i18n/ui.ts</code></span></li>
+      <li><span>{t.home.p3_1} <code>src/pages/index.astro</code></span></li>
+      <li><span>{t.home.p3_2} <code>src/pages/[lang]/...</code></span></li>
+      <li><span>{t.home.p3_3} <code>src/components/Header.astro</code></span></li>
+      <li><span>{t.home.p3_4} <code>src/components/Footer.astro</code></span></li>
+      <li><span>{t.home.p3_5} <code>src/pages/blog/</code></span></li>
+      <li><span>{t.home.p3_6} <code>src/layouts/Layout.astro</code></span></li>
+      <li><span>{t.home.p3_7} <code>src/layouts/BlogPost.astro</code></span></li>
+    </ul>
+  </div>
+</Layout>

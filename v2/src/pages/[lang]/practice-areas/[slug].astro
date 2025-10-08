@@ -1,0 +1,56 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { useTranslations, LANGUAGES_KEYS } from "../../../i18n/utils";
+
+export async function getStaticPaths() {
+  const slugs = [
+    "vehicle-value-loss",
+    "family-law",
+    "cybercrimes",
+    "real-estate-zoning",
+    "inheritance-law",
+    "foreigners-citizenship",
+    "criminal-law",
+    "labor-law",
+    "enforcement-bankruptcy",
+  ];
+  return LANGUAGES_KEYS.flatMap((lang) =>
+    slugs.map((slug) => ({ params: { lang, slug } }))
+  );
+}
+
+const { lang, slug } = Astro.params;
+const t = useTranslations(lang);
+const keyBySlug = {
+  "vehicle-value-loss": "vehicleValueLoss",
+  "family-law": "familyLaw",
+  "cybercrimes": "cybercrimes",
+  "real-estate-zoning": "realEstateZoningLaw",
+  "inheritance-law": "inheritanceLaw",
+  "foreigners-citizenship": "foreignersCitizenshipLaw",
+  "criminal-law": "criminalLaw",
+  "labor-law": "laborLaw",
+  "enforcement-bankruptcy": "enforcementBankruptcyLaw",
+} as const;
+
+const title =
+  t.nav.practiceAreasItems[keyBySlug[slug as keyof typeof keyBySlug]] ?? "Practice Area";
+---
+<Layout title={title} description={title} lang={lang}>
+  <section class="hero bg-base-200 rounded-box">
+    <div class="hero-content text-center">
+      <div class="max-w-2xl">
+        <h1 class="text-3xl font-bold">{title}</h1>
+        <p class="py-4 text-base-content/80">Bu içerik yakında eklenecek.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="mt-6">
+    <div class="card bg-base-100 shadow-sm">
+      <div class="card-body">
+        <p>Bu sayfa {title} alanı için örnek iskelet sayfadır.</p>
+      </div>
+    </div>
+  </div>
+</Layout>

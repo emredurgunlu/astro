@@ -1,0 +1,4 @@
+User-Agent: *
+Disallow:
+
+Sitemap: https://gerekdomain.com/sitemap.xml

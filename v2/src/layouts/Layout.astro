@@ -1,0 +1,42 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { useTranslations, type UiType } from "../i18n/utils";
+import { DEFAULT_LANG } from "../i18n/utils";
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: string;
+  heroImage?: string;
+  pubDate?: Date;
+  updatedDate?: Date;
+}
+
+const { title, description, lang, heroImage, pubDate, updatedDate } = Astro.props as Props;
+
+const t = useTranslations(lang as UiType);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <BaseHead
+      lang={lang ?? DEFAULT_LANG}
+      title={title}
+      description={description}
+      image={heroImage}
+      isArticle={!!pubDate}
+      pubDate={pubDate}
+      updatedDate={updatedDate}
+    />
+  </head>
+  <body>
+    <Header title={t.site.title} lang={lang} />
+    <main class="container mx-auto max-w-5xl px-4 py-6">
+		<slot />
+	</main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,49 @@
+---
+import Palette from '../assets/icons/palette.svg';
+const allThemes = ["light", "dark", "cupcake", "bumblebee", "emerald","corporate","synthwave","retro","cyberpunk","valentine","halloween","garden","forest","aqua","lofi","pastel","fantasy","wireframe","black","luxury","dracula","cmyk","autumn","business","acid","lemonade","night","coffee","winter","dim","nord","sunset","caramellatte","abyss","silk"];
+---
+
+<div class="dropdown dropdown-end" id="theme-selector">
+  <div tabindex="0" role="button" class="btn m-1">
+    <Palette width="24" height="24" />
+  </div>
+  <div
+    tabindex="0"
+    class="dropdown-content menu bg-base-100 rounded-box z-50 w-40 p-2 shadow-sm max-h-64 overflow-y-auto"
+    id="theme-options"
+  >
+    <ul>
+      {
+        allThemes.map((theme) => (
+          <li>
+            <a href="#" data-theme={theme} class="theme-option">{theme}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+
+<!-- 🔽 Tema seçimi için client-side script -->
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const themeContainer = document.getElementById("theme-selector");
+    if (!themeContainer) return;
+    
+    const themeButtons = themeContainer.querySelectorAll(".theme-option");
+    themeButtons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const selectedTheme = btn.getAttribute("data-theme")
+          ?? document.documentElement.getAttribute("data-theme")
+          ?? "light";
+        document.documentElement.setAttribute("data-theme", selectedTheme);
+        localStorage.setItem("theme", selectedTheme);
+      });
+    });
+
+
+  });
+</script>
+

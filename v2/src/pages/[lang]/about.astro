@@ -1,0 +1,36 @@
+---
+import { getLangFromUrl, useTranslations, LANGUAGES_KEYS } from "../../i18n/utils";
+import Layout from "../../layouts/Layout.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+export async function getStaticPaths() {
+  return LANGUAGES_KEYS.map((lang) => ({ params: { lang } }));
+}
+---
+
+<Layout
+  title={t.about.title}
+  description={t.about.description}
+  pubDate={new Date("August 08 2021")}
+  heroImage="/blog-placeholder-about.jpg"
+  lang={lang}
+>
+  <section class="hero bg-base-200 rounded-box">
+    <div class="hero-content text-center">
+      <div class="max-w-2xl">
+        <h1 class="text-3xl font-bold">{t.about.title}</h1>
+        <p class="py-4 text-base-content/80">{t.about.description}</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="mt-6">
+    <div class="card bg-base-100 shadow-sm">
+      <div class="card-body">
+        <p>{t.about.text}</p>
+      </div>
+    </div>
+  </div>
+</Layout>

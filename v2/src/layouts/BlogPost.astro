@@ -1,0 +1,84 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
+import Layout from "./Layout.astro";
+import { useTranslations, type UiType } from "../i18n/utils";
+import JsonLD from "../components/JsonLD.astro";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, description, pubDate, updatedDate, heroImage, lang, tags, author } =
+  Astro.props as Props;
+const t = useTranslations(lang as UiType);
+const siteName = t.site.title;
+const pageUrl = new URL(Astro.url.pathname, Astro.site);
+const imageUrl = heroImage ? new URL(heroImage, Astro.site) : undefined;
+const keywords = (tags ?? []).join(", ");
+---
+
+<Layout
+  title={title}
+  description={description}
+  heroImage={heroImage}
+  pubDate={pubDate}
+  updatedDate={updatedDate}
+  lang={lang}
+>
+  <article class="space-y-6">
+    {
+      heroImage && (
+        <div class="hero rounded-box">
+          <div class="hero-content p-0 w-full">
+            <img
+              width={1020}
+              height={510}
+              src={heroImage}
+              alt={title}
+              decoding="async"
+              fetchpriority="high"
+              class="rounded-box w-full"
+            />
+          </div>
+        </div>
+      )
+    }
+    {tags && tags.length > 0 && (
+      <div class="flex flex-wrap gap-2">
+        {tags.map((tag) => (
+          <a href={`/${lang}/tags/${tag}`} class="badge badge-outline">{tag}</a>
+        ))}
+      </div>
+    )}
+    <div class="card bg-base-100 shadow-sm">
+      <div class="card-body">
+        <h1 class="card-title text-3xl">{title}</h1>
+        <p class="text-sm text-base-content/70">
+          <FormattedDate date={pubDate} />
+          {
+            updatedDate && (
+              <span class="ml-2">Last updated on <FormattedDate date={updatedDate} /></span>
+            )
+          }
+        </p>
+        <div class="divider"></div>
+        <slot />
+      </div>
+    </div>
+  </article>
+  <JsonLD
+    schema={{
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: title,
+      description,
+      datePublished: pubDate?.toISOString?.(),
+      dateModified: updatedDate?.toISOString?.(),
+      author: author ? { "@type": "Person", name: author } : undefined,
+      publisher: { "@type": "Organization", name: siteName },
+      mainEntityOfPage: String(pageUrl),
+      inLanguage: lang,
+      image: imageUrl ? String(imageUrl) : undefined,
+      keywords,
+    }}
+  />
+</Layout>
