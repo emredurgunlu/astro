@@ -1,0 +1,17 @@
+# create a new project with npm
+npm create astro@latest
+
+npm run dev
+
+npm run build
+npm run preview
+
+
+# Tools
+https://developer.chrome.com/docs/lighthouse/overview?hl=tr
+https://pa11y.org/
+https://astro.build/integrations/?search=&categories%5B%5D=toolbar
+
+# Astro Docs
+https://docs.astro.build/en/guides/images/
+https://docs.astro.build/en/guides/internationalization/
