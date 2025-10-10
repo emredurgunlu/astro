@@ -15,9 +15,9 @@ export async function getStaticPaths() {
 	return paths;
 }
 
-const { lang, slug } = Astro.params;
+const { lang } = Astro.params;
 const page = Astro.props;
-const formattedDate = page.data?.date?.toLocaleString(lang);
+const formattedDate = page.data?.pubDate?.toLocaleString(lang);
 
 const { Content } = await page.render();
 ---
