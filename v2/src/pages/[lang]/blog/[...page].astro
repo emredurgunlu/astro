@@ -2,12 +2,13 @@
 import { getBlogPosts } from "../../../content/config";
 import FormattedDate from "../../../components/FormattedDate.astro";
 import Layout from "../../../layouts/Layout.astro";
-import { useTranslations } from "../../../i18n/utils";
+import { useTranslations, type UiType, } from "../../../i18n/utils";
+import type { PaginateFunction } from "astro";
 
-const { lang } = Astro.params;
-const t = useTranslations(lang);
+const lang = Astro.params.lang as UiType;
+const t = useTranslations(lang );
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
   const PAGE_SIZE = 2;
   const _posts = await getBlogPosts();
   return ["en", "fr", "es"].flatMap((lang) => {
