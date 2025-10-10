@@ -6,6 +6,8 @@ npm run dev
 npm run build
 npm run preview
 
+npx create-next-app@latest
+
 
 # Tools
 https://developer.chrome.com/docs/lighthouse/overview?hl=tr
