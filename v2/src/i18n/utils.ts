@@ -60,3 +60,14 @@ export function getLocalizedPathname(pathname: string, lang: UiType) {
   }
   return `/${lang}${pathname}`;
 }
+
+export function getTagsByLanguage(posts: Array<any>, lang: UiType) {
+  const filteredPosts = posts.filter((post) => post?.data?.lang === lang);
+  const allTags = filteredPosts.flatMap((post) => post?.data?.tags || []);
+  const uniqueTags = Array.from(new Set(allTags));
+  const tagsWithPosts = uniqueTags.map((tag) => ({
+    tag,
+    posts: filteredPosts.filter((post) => (post?.data?.tags || []).includes(tag)),
+  }));
+  return tagsWithPosts;
+}

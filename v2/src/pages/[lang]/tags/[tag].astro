@@ -1,0 +1,34 @@
+---
+import { getBlogPosts } from "../../../content/config";
+import { LANGUAGES, getTagsByLanguage } from "../../../i18n/utils";
+import type { UiType } from "../../../i18n/utils";
+import Layout from "../../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getBlogPosts();
+  return Object.keys(LANGUAGES).flatMap((lang) => {
+    const postsForLang = posts.filter((post) => post?.data?.lang === lang);
+    const tags = [...new Set(postsForLang.flatMap((post) => post?.data?.tags || []))];
+    return tags.map((tag) => ({ params: { lang, tag } }));
+  });
+}
+
+const { lang, tag } = Astro.params;
+const posts = await getBlogPosts();
+const tagsWithPosts = getTagsByLanguage(posts, lang as UiType);
+const tagData = tagsWithPosts.find(t => t.tag === tag);
+---
+<Layout title={`Tag: ${tag}`} description={`Tag: ${tag}`} lang={lang}>
+  <h1>Tag: {tag}</h1>
+  {tagData ? (
+    <ul>
+      {tagData.posts.map(post => (
+        <li>
+          <a href={`/${lang}/blog/${post.blog_slug}`}>{post.data.title}</a>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p>No posts found for this tag.</p>
+  )}
+</Layout>

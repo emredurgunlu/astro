@@ -26,4 +26,16 @@ const { Content } = await page.render();
 	<h1>{page.data.title}</h1>
 	<p>by {page.data.author} • {formattedDate}</p>
 	<Content />
+  {page.data.tags && page.data.tags.length > 0 && (
+    <div>
+      <strong>Tags:</strong>
+      <ul>
+        {page.data.tags.map(tag => (
+          <li>
+            <a href={`/${lang}/tags/${tag}`}>{tag}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
 </BlogPost>
