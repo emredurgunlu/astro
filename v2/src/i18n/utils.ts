@@ -53,12 +53,36 @@ function pathNameStartsWithLanguage(pathname: string) {
 }
 
 export function getLocalizedPathname(pathname: string, lang: UiType) {
+  // First, swap the language segment or prefix with the desired language
+  let localized = pathname;
   if (pathNameStartsWithLanguage(pathname)) {
     const availableLanguages = Object.keys(LANGUAGES).join('|');
     const regex = new RegExp(`^\/(${availableLanguages})`);
-    return pathname.replace(regex, `/${lang}`);
+    localized = pathname.replace(regex, `/${lang}`);
+  } else {
+    localized = `/${lang}${pathname}`;
   }
-  return `/${lang}${pathname}`;
+
+  // If the path points to a tag page, translate the tag slug to the target language
+  const parts = localized.split('/');
+  // Expecting ['', lang, 'tags', '<tag>', ...]
+  if (parts.length >= 4 && parts[2] === 'tags') {
+    const currentTag = parts[3];
+    parts[3] = translateTag(currentTag, lang);
+    localized = parts.join('/');
+  }
+
+  return localized;
+}
+
+// Minimal tag localization: swap trailing language suffix (en|es|fr)
+// Works for slugs like 'astroen', 'astroes', 'webdevfr', 'tutoriales'.
+// If slug doesn't follow this pattern (e.g. 'mdx'), it remains unchanged.
+export function translateTag(tag: string, toLang: UiType): string {
+  const match = tag.match(/^(.+?)(en|es|fr)$/);
+  if (!match) return tag;
+  const base = match[1];
+  return `${base}${toLang}`;
 }
 
 export function getTagsByLanguage(posts: Array<any>, lang: UiType) {
