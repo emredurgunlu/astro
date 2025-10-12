@@ -1,3 +1,7 @@
+---
+import ThemeSelector from "./ThemeSelector.astro";
+---
+
 <nav class="navbar bg-base-100 shadow-sm">
   <div class="navbar-start">
     <div class="dropdown">
@@ -49,17 +53,6 @@
     </ul>
   </div>
   <div class="navbar-end">
-    <div class="dropdown">
-      <div tabindex="0" role="button" class="btn m-1">
-        <img src="/icons/palette.svg" alt="Tema" width="24" height="24" />
-      </div>
-      <ul
-        tabindex="0"
-        class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
-      >
-        <li><a>Item 1sfgsfgfgfg</a></li>
-        <li><a>Item 2</a></li>
-      </ul>
-    </div>
+<ThemeSelector/>
   </div>
 </nav>

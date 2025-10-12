@@ -1,0 +1,24 @@
+---
+import "../assets/app.css";
+import Navbar from "../components/Navbar.astro";
+---
+
+<!doctype html>
+<html>
+    <head>
+        <script is:inline>
+            (() => {
+                const t = localStorage.getItem("theme") || "cupcake";
+                document.documentElement.setAttribute("data-theme", t);
+            })();
+        </script>
+    </head>
+    <body>
+        <header>
+            <Navbar />
+        </header>
+        <main>
+            <slot />
+        </main>
+    </body>
+</html>
