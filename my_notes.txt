@@ -18,4 +18,5 @@ https://astro.build/integrations/?search=&categories%5B%5D=toolbar
 https://docs.astro.build/en/guides/images/
 https://docs.astro.build/en/guides/internationalization/
 
-admin içindeki herşeyi sildim ve sıfırdan bir next js projesi oluşturdum. bu v2 projesi githubımda olacak. Admin paneli ile bu github reposuna commit gönderip bazı klasör ve dosyalarda değişiklik yapacağım. Öncelikle şunu tespit etmemiz gerekiyor.  githubıma yüklü olacak olan v2 projesinde neler commit ile değiştirilebilecek. Bence v2 projesinde public klasörü altında resim eklenebilmeli ve silinebilme github commiti ile. src/i18n/ui.ts içeriği monaco ui ile değiştirilebilmeli. monaco ui paketini kurdum. src/i18n/ui.ts  bununla ilgili dosya ekleme silme olmamalı sadece içeriği değiştirilebilmeli. Ayrıca src/content/blog içine yeni klasör eklenebilmeli bu yeni klasör içinde 3 tane dosya olmalı md formatında isimleri de en.md es.md ve fr.md olmalı. Bunların da içeriği npm i @toast-ui/react-editor ile değiştirilebilmeli. Yani ana sayfada 3 tane seçenek olacak. 1-resim düzenleme 2-Genel yazı Düzenleme(yani ui.ts) ve 3-Blog Düzenleme Ve bir de Değişiklikleri kaydet butonu olacak. Değişiklikleri kaydet butonuna tıklanıldığında Commit işlemi gerçekleşmeli. 
+https://freesvgicons.com/
+https://freesvgicons.com/search?q=palette&collectionId=lucide

@@ -1,10 +1,15 @@
 ---
 import "../assets/app.css";
+import Navbar from "../components/Navbar.astro";
 ---
 
 <!doctype html>
 <html data-theme="cupcake">
     <body>
+        <header>
+            <nav>
+                <Navbar/>
+        </header>
         <main>
             <slot />
         </main>
