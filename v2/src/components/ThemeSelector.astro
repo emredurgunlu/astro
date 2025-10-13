@@ -21,14 +21,11 @@ const allThemes = ["dark", "light", "cupcake", "valentine"];
 </div>
 
 <!-- 🔽 Tema seçimi için client-side script -->
-<script>
-  (() => {
-      const t = localStorage.getItem("theme") || "cupcake";
-      document.documentElement.setAttribute("data-theme", t);
-  })();
+<script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
     const themeButtons = document.querySelectorAll("[data-theme]");
-
+    const savedTheme = localStorage.getItem("theme") ?? "cupcake";
+    document.documentElement.setAttribute("data-theme", savedTheme);
     themeButtons.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
@@ -38,8 +35,7 @@ const allThemes = ["dark", "light", "cupcake", "valentine"];
       });
     });
 
-    const savedTheme = localStorage.getItem("theme") ?? "cupcake";
-    document.documentElement.setAttribute("data-theme", savedTheme);
+
   });
 </script>
 
