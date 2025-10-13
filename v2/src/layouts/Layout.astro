@@ -14,8 +14,7 @@ interface Props {
   updatedDate?: Date;
 }
 
-const { title, description, lang } =
-  Astro.props;
+const { title, description, lang } = Astro.props;
 
 const t = useTranslations(lang as UiType);
 ---
@@ -23,13 +22,23 @@ const t = useTranslations(lang as UiType);
 <!doctype html>
 <html lang={lang}>
   <head>
-    <BaseHead lang={lang ?? DEFAULT_LANG} title={title} description={description} />
+    <BaseHead
+      lang={lang ?? DEFAULT_LANG}
+      title={title}
+      description={description}
+    />
+    <script is:inline>
+      (() => {
+        const t = localStorage.getItem("theme") || "cupcake";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
   </head>
   <body>
     <Header title={t("site.title")} lang={lang} />
     <main>
-		<slot />
-	</main>
+      <slot />
+    </main>
     <Footer />
   </body>
 </html>
