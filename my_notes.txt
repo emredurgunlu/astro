@@ -20,3 +20,6 @@ https://docs.astro.build/en/guides/internationalization/
 
 https://freesvgicons.com/
 https://freesvgicons.com/search?q=palette&collectionId=lucide
+
+npm i @astrojs/rss
+daha sonra astro.config.mjs dosyasına site: 'https://example.com', ekle
