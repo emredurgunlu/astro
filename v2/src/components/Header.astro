@@ -3,7 +3,7 @@ import HeaderLink from "./HeaderLink.astro";
 // import { SITE_TITLE } from "../consts";
 import LangLink from "./LangLink.astro";
 import ThemeIcon from './ThemeIcon.astro';
-
+import ThemeSelector from './ThemeSelector.astro';
 const { lang, title } = Astro.props;
 
 const homeSlug = `/${lang || ""}`;
@@ -28,6 +28,7 @@ const tagsSlug = `/${lang || ""}/tags`;
       <LangLink language="fr" isActive={lang == "fr"} />
     </div>
         <div>
+      <!--  <ThemeSelector /> -->
       <ThemeIcon />
     </div>
     <div class="social-links">
