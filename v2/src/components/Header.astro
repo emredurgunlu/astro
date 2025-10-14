@@ -2,10 +2,11 @@
 import HeaderLink from "./HeaderLink.astro";
 import LangSelector from "./LangSelector.astro";
 import ThemeSelector from './ThemeSelector.astro';
+import { DEFAULT_LANG, useTranslations } from "../i18n/utils";
 const { lang, title } = Astro.props;
 
-const defaultLang = 'en';
-const currentLang = lang ?? defaultLang;
+const currentLang = (lang ?? DEFAULT_LANG);
+const t = useTranslations(currentLang);
 const prefix = `/${currentLang}`;
 const homeSlug = `${prefix}`;
 const blogSlug = `${prefix}/blog`;
@@ -23,10 +24,10 @@ const tagsSlug = `${prefix}/tags`;
           </svg>
         </div>
         <ul tabindex="-1" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
-          <li><HeaderLink href={homeSlug}>Home</HeaderLink></li>
-          <li><HeaderLink href={blogSlug}>Blog</HeaderLink></li>
-          <li><HeaderLink href={tagsSlug}>Tags</HeaderLink></li>
-          <li><HeaderLink href={aboutSlug}>About</HeaderLink></li>
+          <li><HeaderLink href={homeSlug}>{t('nav.home')}</HeaderLink></li>
+          <li><HeaderLink href={blogSlug}>{t('nav.blog')}</HeaderLink></li>
+          <li><HeaderLink href={tagsSlug}>{t('nav.tags')}</HeaderLink></li>
+          <li><HeaderLink href={aboutSlug}>{t('nav.about')}</HeaderLink></li>
         </ul>
       </div>
       <a href={homeSlug} class="btn btn-ghost text-xl">{title}</a>
@@ -34,10 +35,10 @@ const tagsSlug = `${prefix}/tags`;
 
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
-        <li><HeaderLink href={homeSlug}>Home</HeaderLink></li>
-        <li><HeaderLink href={blogSlug}>Blog</HeaderLink></li>
-        <li><HeaderLink href={tagsSlug}>Tags</HeaderLink></li>
-        <li><HeaderLink href={aboutSlug}>About</HeaderLink></li>
+        <li><HeaderLink href={homeSlug}>{t('nav.home')}</HeaderLink></li>
+        <li><HeaderLink href={blogSlug}>{t('nav.blog')}</HeaderLink></li>
+        <li><HeaderLink href={tagsSlug}>{t('nav.tags')}</HeaderLink></li>
+        <li><HeaderLink href={aboutSlug}>{t('nav.about')}</HeaderLink></li>
       </ul>
     </div>
 

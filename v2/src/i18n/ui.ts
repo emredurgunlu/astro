@@ -4,6 +4,8 @@ export const ui = {
     "site.description": "Welcome to my website!",
     "nav.home": "Home",
     "nav.about": "About",
+    "nav.blog": "Blog",
+    "nav.tags": "Tags",
     "nav.twitter": "Twitter",
     "home.welcome": "Welcome to my website",
     "about.title": "About me",
@@ -37,6 +39,24 @@ export const ui = {
     "pagination.prev": "Previous",
     "pagination.next": "Next",
     "pagination.last": "Last",
+  },
+  tr: {
+    "site.title": "Astro Blog",
+    "site.description": "Web siteme hoş geldiniz!",
+    "nav.home": "Ana Sayfa",
+    "nav.about": "Hakkımda",
+    "nav.blog": "Blog",
+    "nav.tags": "Etiketler",
+    "home.welcome": "Web siteme hoş geldiniz",
+    "about.title": "Hakkımda",
+    "about.description": "Bir web geliştiricisiyim ve Astro'yu seviyorum!",
+    "about.text": `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
+		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
+		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
+		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
+		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
+		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.`,
   },
   fr: {
     "site.title": "Astro Blog",

@@ -2,8 +2,7 @@ import { ui } from "./ui";
 
 export const LANGUAGES = {
   en: "English",
-  fr: "Français",
-  es: "Español",
+  tr: "Türkçe",
 };
 
 export const LANGUAGES_KEYS = Object.keys(LANGUAGES) as UiType[];
@@ -79,7 +78,7 @@ export function getLocalizedPathname(pathname: string, lang: UiType) {
 // Works for slugs like 'astroen', 'astroes', 'webdevfr', 'tutoriales'.
 // If slug doesn't follow this pattern (e.g. 'mdx'), it remains unchanged.
 export function translateTag(tag: string, toLang: UiType): string {
-  const match = tag.match(/^(.+?)(en|es|fr)$/);
+  const match = tag.match(/^(.+?)(en|tr)$/);
   if (!match) return tag;
   const base = match[1];
   return `${base}${toLang}`;
