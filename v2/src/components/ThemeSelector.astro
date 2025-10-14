@@ -28,12 +28,12 @@ const allThemes = ["dark", "light", "cupcake", "valentine"];
     if (!themeContainer) return;
     
     const themeButtons = themeContainer.querySelectorAll(".theme-option");
-    const savedTheme = localStorage.getItem("theme") ?? "cupcake";
-    document.documentElement.setAttribute("data-theme", savedTheme);
     themeButtons.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
-        const selectedTheme = btn.getAttribute("data-theme") ?? "cupcake";
+        const selectedTheme = btn.getAttribute("data-theme")
+          ?? document.documentElement.getAttribute("data-theme")
+          ?? "light";
         document.documentElement.setAttribute("data-theme", selectedTheme);
         localStorage.setItem("theme", selectedTheme);
       });

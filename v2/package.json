@@ -7,7 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "clean": "powershell Remove-Item -Recurse -Force node_modules, package-lock.json, dist, .astro\""
+    "clean": "powershell Remove-Item -Recurse -Force node_modules, package-lock.json, dist, .astro"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.7",

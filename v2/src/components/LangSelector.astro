@@ -36,16 +36,14 @@ import type {UiType} from "../i18n/utils";
     const currentPath = window.location.pathname;
     const pathParts = currentPath.split('/').filter(part => part !== '');
     const currentLang = pathParts.length > 0 && languages.includes(pathParts[0]) ? pathParts[0] : defaultLang;
+    const hasLangInPath = pathParts.length > 0 && languages.includes(pathParts[0]);
 
-    if (savedLang !== currentLang) {
-      let newPath = "/";
-      if (savedLang !== defaultLang) {
-        newPath += savedLang + "/";
-      }
-      if (pathParts.length > 0 && languages.includes(pathParts[0])) {
-        pathParts.shift();
-      }
-      newPath += pathParts.join("/");
+    // Yalnızca URL dil içermiyorsa otomatik yönlendir ve her zaman dil prefiksi ekle
+    if (!hasLangInPath && savedLang !== currentLang) {
+      const restParts = hasLangInPath ? pathParts.slice(1) : pathParts;
+      const restPath = restParts.join('/');
+      let newPath = `/${savedLang}`;
+      if (restPath) newPath += `/${restPath}`;
       window.location.href = newPath;
       return;
     }
@@ -56,15 +54,11 @@ import type {UiType} from "../i18n/utils";
         const selectedLang = btn.getAttribute("data-lang") ?? defaultLang;
         localStorage.setItem("preferredLanguage", selectedLang);
         const currentPath = window.location.pathname;
-        const pathParts = currentPath.split('/').filter(part => part !== '');
-        if (pathParts.length > 0 && languages.includes(pathParts[0])) {
-          pathParts.shift();
-        }
-        let newPath = "/";
-        if (selectedLang !== defaultLang) {
-          newPath += selectedLang + "/";
-        }
-        newPath += pathParts.join("/");
+        const parts = currentPath.split('/').filter(p => p !== '');
+        const restParts = parts.length > 0 && languages.includes(parts[0]) ? parts.slice(1) : parts;
+        const restPath = restParts.join('/');
+        let newPath = `/${selectedLang}`;
+        if (restPath) newPath += `/${restPath}`;
         window.location.href = newPath;
       });
     });

@@ -39,6 +39,14 @@ const alternateLinks = alternateLang.map((_lang: UiType) => {
 ---
 
 <!-- Global Metadata -->
+<script is:inline>
+  try {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+  } catch {}
+</script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
