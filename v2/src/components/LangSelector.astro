@@ -1,0 +1,71 @@
+---
+import {LANGUAGES,LANGUAGES_KEYS,DEFAULT_LANG} from "../i18n/utils";
+import type {UiType} from "../i18n/utils";
+---
+
+<div class="dropdown" data-languages={JSON.stringify(LANGUAGES_KEYS)} data-default-lang={DEFAULT_LANG}>
+  <div tabindex="0" role="button" class="btn m-1">
+    <img src="/icons/world.svg" alt="Language" width="24" height="24" />
+  </div>
+  <ul
+    tabindex="0"
+    class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+  >
+    {
+      LANGUAGES_KEYS.map((key: UiType) => (
+        <li>
+          <a href="#" data-lang={key}>{LANGUAGES[key]}</a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<!-- 🔽 Dil seçimi için client-side script -->
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.querySelector(".dropdown[data-languages]");
+    const langButtons = container.querySelectorAll("[data-lang]");
+    const languages = JSON.parse(container.getAttribute("data-languages"));
+    const defaultLang = container.getAttribute("data-default-lang");
+    const savedLang = localStorage.getItem("preferredLanguage") ?? defaultLang;
+
+    // Sayfa yüklenirken kaydedilen dile yönlendir
+    const currentPath = window.location.pathname;
+    const pathParts = currentPath.split('/').filter(part => part !== '');
+    const currentLang = pathParts.length > 0 && languages.includes(pathParts[0]) ? pathParts[0] : defaultLang;
+
+    if (savedLang !== currentLang) {
+      let newPath = "/";
+      if (savedLang !== defaultLang) {
+        newPath += savedLang + "/";
+      }
+      if (pathParts.length > 0 && languages.includes(pathParts[0])) {
+        pathParts.shift();
+      }
+      newPath += pathParts.join("/");
+      window.location.href = newPath;
+      return;
+    }
+
+    langButtons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const selectedLang = btn.getAttribute("data-lang") ?? defaultLang;
+        localStorage.setItem("preferredLanguage", selectedLang);
+        const currentPath = window.location.pathname;
+        const pathParts = currentPath.split('/').filter(part => part !== '');
+        if (pathParts.length > 0 && languages.includes(pathParts[0])) {
+          pathParts.shift();
+        }
+        let newPath = "/";
+        if (selectedLang !== defaultLang) {
+          newPath += selectedLang + "/";
+        }
+        newPath += pathParts.join("/");
+        window.location.href = newPath;
+      });
+    });
+  });
+</script>
+

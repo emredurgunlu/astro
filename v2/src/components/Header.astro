@@ -1,8 +1,6 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-// import { SITE_TITLE } from "../consts";
-import LangLink from "./LangLink.astro";
-import ThemeIcon from './ThemeIcon.astro';
+import LangSelector from "./LangSelector.astro";
 import ThemeSelector from './ThemeSelector.astro';
 const { lang, title } = Astro.props;
 
@@ -15,19 +13,16 @@ const tagsSlug = `/${lang || ""}/tags`;
 <header>
   <nav>
     <h2><a href="/">{title}</a></h2>
-    <!-- <h2><a href="/">{SITE_TITLE}</a></h2> -->
     <div class="internal-links">
       <HeaderLink href={homeSlug}>Home</HeaderLink>
       <HeaderLink href={blogSlug}>Blog</HeaderLink>
       <HeaderLink href={tagsSlug}>Tags</HeaderLink>
       <HeaderLink href={aboutSlug}>About</HeaderLink>
     </div>
-    <div class="internal-links">
-      <LangLink language="en" isActive={lang == "en"} />
-      <LangLink language="es" isActive={lang == "es"} />
-      <LangLink language="fr" isActive={lang == "fr"} />
+    <div>
+       <LangSelector />
     </div>
-        <div>
+    <div>
        <ThemeSelector />
     </div>
     <div class="social-links">
