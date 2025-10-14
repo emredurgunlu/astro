@@ -2,18 +2,19 @@
 const allThemes = ["dark", "light", "cupcake", "valentine"];
 ---
 
-<div class="dropdown">
+<div class="dropdown" id="theme-selector">
   <div tabindex="0" role="button" class="btn m-1">
     <img src="/icons/palette.svg" alt="Tema" width="24" height="24" />
   </div>
   <ul
     tabindex="0"
     class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+    id="theme-options"
   >
     {
       allThemes.map((theme) => (
         <li>
-          <a href="#" data-theme={theme}>{theme}</a>
+          <a href="#" data-theme={theme} class="theme-option">{theme}</a>
         </li>
       ))
     }
@@ -23,7 +24,10 @@ const allThemes = ["dark", "light", "cupcake", "valentine"];
 <!-- 🔽 Tema seçimi için client-side script -->
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
-    const themeButtons = document.querySelectorAll("[data-theme]");
+    const themeContainer = document.getElementById("theme-selector");
+    if (!themeContainer) return;
+    
+    const themeButtons = themeContainer.querySelectorAll(".theme-option");
     const savedTheme = localStorage.getItem("theme") ?? "cupcake";
     document.documentElement.setAttribute("data-theme", savedTheme);
     themeButtons.forEach((btn) => {
