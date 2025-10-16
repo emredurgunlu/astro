@@ -26,7 +26,7 @@ const t = useTranslations(lang as UiType);
     <BaseHead lang={lang ?? DEFAULT_LANG} title={title} description={description} />
   </head>
   <body>
-    <Header title={t("site.title")} lang={lang} />
+    <Header title={t.site.title} lang={lang} />
     <main>
 		<slot />
 	</main>

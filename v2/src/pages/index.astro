@@ -7,13 +7,13 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<Layout title={t("site.title")} description={t("site.description")} lang={lang}>
-  <h1>{t("home.welcome")}</h1>
+<Layout title={t.site.title} description={t.site.description} lang={lang}>
+  <h1>{t.home.welcome}</h1>
   <p>
-    {t("home.p1")}
+    {t.home.p1}
   </p>
   <p>
-    {t("home.p2")}
+    {t.home.p2}
   </p>
   <p>Here are a few ideas on how to get started with the template:</p>
   <ul>

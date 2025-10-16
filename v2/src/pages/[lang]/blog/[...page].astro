@@ -162,40 +162,40 @@ const { page } = Astro.props;
       {
         page.url.first ? (
           <a href={page.url.first} class="page-link first-page">
-            {t("pagination.firts")}
+            {t.pagination.first}
           </a>
         ) : (
-          <span class="disabled">{t("pagination.firts")}</span>
+          <span class="disabled">{t.pagination.first}</span>
         )
       }
       {
         page.url.prev ? (
           <a href={page.url.prev} class="page-link prev-page">
-            {t("pagination.prev")}
+            {t.pagination.prev}
           </a>
         ) : (
-          <span class="disabled">{t("pagination.prev")}</span>
+          <span class="disabled">{t.pagination.prev}</span>
         )
       }
       <span class="current-page"
-        >{t("page")} {page.currentPage}/{page.lastPage}</span
+        >{t.page} {page.currentPage}/{page.lastPage}</span
       >
       {
         page.url.next ? (
           <a href={page.url.next} class="page-link next-page">
-            {t("pagination.next")}
+            {t.pagination.next}
           </a>
         ) : (
-          <span class="disabled">{t("pagination.next")}</span>
+          <span class="disabled">{t.pagination.next}</span>
         )
       }
       {
         page.url.last ? (
           <a href={page.url.last} class="page-link last-page">
-            {t("pagination.last")}
+            {t.pagination.last}
           </a>
         ) : (
-          <span class="disabled">{t("pagination.last")}</span>
+          <span class="disabled">{t.pagination.last}</span>
         )
       }
     </div>

@@ -18,20 +18,7 @@ export function getLangFromUrl(url: URL) {
 }
 
 export function useTranslations(lang?: UiType) {
-  const defaultTrans = ui[DEFAULT_LANG];
-  const activeTrans = (lang ? ui[lang] : defaultTrans) as Partial<typeof defaultTrans>;
-  return function t(
-    key: keyof typeof defaultTrans,
-    ...args: any[]
-  ) {
-    let translation: string = (activeTrans[key] ?? defaultTrans[key]) as string;
-    if (args.length > 0) {
-      for (let i = 0; i < args.length; i++) {
-        translation = translation.replace(`{${i}}`, String(args[i]));
-      }
-    }
-    return translation;
-  };
+  return lang ? ui[lang] : ui[DEFAULT_LANG];
 }
 
 export function pathNameIsInLanguage(pathname: string, lang: UiType) {
