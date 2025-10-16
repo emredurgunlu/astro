@@ -3,29 +3,31 @@ import { ui } from "./ui";
 export const LANGUAGES = {
   en: "English",
   tr: "Türkçe",
-};
+} as const;
 
 export const LANGUAGES_KEYS = Object.keys(LANGUAGES) as UiType[];
 
-export const DEFAULT_LANG: UiType = "en";
+export const DEFAULT_LANG = "en" as const;
 
-export type UiType = keyof typeof ui;
+export type UiType = keyof typeof LANGUAGES;
 
 export function getLangFromUrl(url: URL) {
   const [, lang] = url.pathname.split("/");
-  if (lang in ui) return lang as UiType;
+  if (lang && lang in LANGUAGES) return lang as UiType;
   return DEFAULT_LANG;
 }
 
 export function useTranslations(lang?: UiType) {
+  const defaultTrans = ui[DEFAULT_LANG];
+  const activeTrans = (lang ? ui[lang] : defaultTrans) as Partial<typeof defaultTrans>;
   return function t(
-    key: keyof (typeof ui)[typeof DEFAULT_LANG],
+    key: keyof typeof defaultTrans,
     ...args: any[]
   ) {
-    let translation: string = ui[lang ?? DEFAULT_LANG][key] || ui[DEFAULT_LANG][key];
+    let translation: string = (activeTrans[key] ?? defaultTrans[key]) as string;
     if (args.length > 0) {
       for (let i = 0; i < args.length; i++) {
-        translation = translation.replace(`{${i}}`, args[i]);
+        translation = translation.replace(`{${i}}`, String(args[i]));
       }
     }
     return translation;
@@ -74,8 +76,8 @@ export function getLocalizedPathname(pathname: string, lang: UiType) {
   return localized;
 }
 
-// Minimal tag localization: swap trailing language suffix (en|es|fr)
-// Works for slugs like 'astroen', 'astroes', 'webdevfr', 'tutoriales'.
+// Minimal tag localization: swap trailing language suffix (en| tr)
+// Works for slugs like 'astroen', 'astrotr'
 // If slug doesn't follow this pattern (e.g. 'mdx'), it remains unchanged.
 export function translateTag(tag: string, toLang: UiType): string {
   const match = tag.match(/^(.+?)(en|tr)$/);

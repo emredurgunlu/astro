@@ -30,8 +30,7 @@ export const ui = {
     "home.p3.2": "Edit translated pages in",
     "home.p3.3": "Edit the site header items in",
     "home.p3.4": "Add your name to the footer in",
-    "home.p3.5":
-      "Check out the included blog posts in languages ES, EN and FR in",
+    "home.p3.5": "Check out the included blog posts in languages EN and TR in",
     "home.p3.6": "Customize the general site layout in",
     "home.p3.7": "Customize the blog post page layout in",
     page: "Page",
@@ -48,6 +47,22 @@ export const ui = {
     "nav.blog": "Blog",
     "nav.tags": "Etiketler",
     "home.welcome": "Web siteme hoş geldiniz",
+    "nav.twitter": "Twitter",
+    "home.p1": `Resmi blog başlangıç şablonuna hoş geldiniz. Bu şablon,
+    Astro ile kişisel web sitesi, blog veya portföy oluşturmak isteyenler için
+    hafif ve minimal bir başlangıç noktası sunar.`,
+    "home.p2": `Bu şablon, <code>astro.config.mjs</code> dosyanızda önceden yapılandırılmış
+    bazı entegrasyonlarla gelir. Projenize Tailwind, React veya Vue gibi araçları eklemek için
+    <a href=\"https://astro.build/integrations\">Astro Integrations</a> ile kurulumunuzu özelleştirebilirsiniz.`,
+    "home.p3": "Şablonla başlamanız için birkaç fikir:",
+    "home.p3.0": "Çevirileri yönetin",
+    "home.p3.1": "Bu sayfayı düzenleyin",
+    "home.p3.2": "Çevrilmiş sayfaları düzenleyin",
+    "home.p3.3": "Site başlık öğelerini düzenleyin",
+    "home.p3.4": "Adınızı alt bilgiye ekleyin",
+    "home.p3.5": "EN ve TR dillerindeki blog yazılarını inceleyin",
+    "home.p3.6": "Genel site yerleşimini özelleştirin",
+    "home.p3.7": "Blog yazısı sayfa yerleşimini özelleştirin",
     "about.title": "Hakkımda",
     "about.description": "Bir web geliştiricisiyim ve Astro'yu seviyorum!",
     "about.text": `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -57,72 +72,10 @@ export const ui = {
 		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
 		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
 		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.`,
-  },
-  fr: {
-    "site.title": "Astro Blog",
-    "site.description": "Bienvenue sur mon site web !",
-    "nav.home": "Accueil",
-    "nav.about": "À propos",
-    "home.welcome": "Bienvenue sur mon site web",
-    "about.title": "À propos de moi",
-    "about.description": "Je suis un développeur web et j'adore Astro !",
-    "about.text": `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.`,
-    "home.p1": `Bienvenue sur le modèle de démarrage du blog officiel. Ce modèle sert de point de départ léger et minimaliste pour toute personne souhaitant créer un site web personnel, un blog ou un portfolio avec Astro.`,
-    "home.p2": `Ce modèle est livré avec quelques intégrations déjà configurées dans votre fichier <code>astro.config.mjs</code>. Vous pouvez personnaliser votre configuration avec <a href="https://astro.build/integrations">Astro Integrations</a> pour ajouter des outils comme Tailwind, React ou Vue à votre projet.`,
-    "home.p3": "Voici quelques idées pour commencer avec le modèle :",
-    "home.p3.0": "Gérer les traductions dans",
-    "home.p3.1": "Modifier cette page dans",
-    "home.p3.2": "Modifier les pages traduites dans",
-    "home.p3.3": "Modifier les éléments de l'en-tête du site dans",
-    "home.p3.4": "Ajouter votre nom au pied de page dans",
-    "home.p3.5": "Découvrez les articles de blog inclus en ES, EN et FR dans",
-    "home.p3.6": "Personnalisez la mise en page générale du site dans",
-    "home.p3.7":
-      "Personnalisez la mise en page de la page des articles de blog dans",
-    page: "Page",
-    "pagination.firts": "Premier",
-    "pagination.prev": "Précédent",
-    "pagination.next": "Suivant",
-    "pagination.last": "Dernier",
-  },
-  es: {
-    "site.title": "Astro Blog",
-    "site.description": "Bienvenido a mi sitio web!",
-    "nav.home": "Inicio",
-    "nav.about": "Quien soy",
-    "home.welcome": "Bienvenido a mi sitio web",
-    "about.title": "Sobre mi",
-    "about.description": "Soy un desarrollador web y me encanta Astro!",
-    "about.text": `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.`,
-    "home.p1": `Bienvenido a la plantilla de inicio de blog oficial. Esta plantilla sirve como punto de partida ligero y con estilo mínimo para cualquiera que quiera construir un sitio web personal, un blog o un portafolio con Astro.`,
-    "home.p2": `Esta plantilla viene con algunas integraciones ya configuradas en su archivo <code>astro.config.mjs</code>. Puede personalizar su configuración con <a href="https://astro.build/integrations">Astro Integrations</a> para agregar herramientas como Tailwind, React o Vue a su proyecto.`,
-    "home.p3": "Aquí hay algunas ideas sobre cómo comenzar con la plantilla:",
-    "home.p3.0": "Maneje las traducciones en",
-    "home.p3.1": "Edite esta página en",
-    "home.p3.2": "Editar páginas traducidas en",
-    "home.p3.3": "Edite los elementos de encabezado del sitio en",
-    "home.p3.4": "Agregue su nombre al pie de página en",
-    "home.p3.5":
-      "Consulte las publicaciones de blog incluidas en idiomas ES, EN y FR en",
-    "home.p3.6": "Personalice el diseño general del sitio en",
-    "home.p3.7":
-      "Personalice el diseño de la página de publicación del blog en",
-    page: "Página",
-    "pagination.firts": "Primero",
-    "pagination.prev": "Anterior",
-    "pagination.next": "Siguiente",
-    "pagination.last": "Último",
+    page: "Sayfa",
+    "pagination.firts": "İlk",
+    "pagination.prev": "Önceki",
+    "pagination.next": "Sonraki",
+    "pagination.last": "Son",
   },
 } as const;
