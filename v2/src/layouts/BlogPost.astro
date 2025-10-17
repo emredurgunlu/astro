@@ -5,7 +5,7 @@ import Layout from "./Layout.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage, lang } =
+const { title, description, pubDate, updatedDate, heroImage, lang, tags } =
   Astro.props;
 ---
 
@@ -17,26 +17,37 @@ const { title, description, pubDate, updatedDate, heroImage, lang } =
   updatedDate={updatedDate}
   lang={lang}
 >
-  <article>
-    <div class="hero-image">
-      {heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
-    </div>
-    <div class="prose">
-      <div class="title">
-        <div class="date">
+  <article class="space-y-6">
+    {
+      heroImage && (
+        <div class="hero rounded-box">
+          <div class="hero-content p-0 w-full">
+            <img width={1020} height={510} src={heroImage} alt="" class="rounded-box w-full" />
+          </div>
+        </div>
+      )
+    }
+    {tags && tags.length > 0 && (
+      <div class="flex flex-wrap gap-2">
+        {tags.map((tag) => (
+          <a href={`/${lang}/tags/${tag}`} class="badge badge-outline">{tag}</a>
+        ))}
+      </div>
+    )}
+    <div class="card bg-base-100 shadow-sm">
+      <div class="card-body">
+        <h1 class="card-title text-3xl">{title}</h1>
+        <p class="text-sm text-base-content/70">
           <FormattedDate date={pubDate} />
           {
             updatedDate && (
-              <div class="last-updated-on">
-                Last updated on <FormattedDate date={updatedDate} />
-              </div>
+              <span class="ml-2">Last updated on <FormattedDate date={updatedDate} /></span>
             )
           }
-        </div>
-        <h1>{title}</h1>
-        <hr />
+        </p>
+        <div class="divider"></div>
+        <slot />
       </div>
-      <slot />
     </div>
   </article>
 </Layout>

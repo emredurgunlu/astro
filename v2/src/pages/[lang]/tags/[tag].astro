@@ -3,6 +3,7 @@ import { getBlogPosts } from "../../../content/config";
 import { LANGUAGES, getTagsByLanguage } from "../../../i18n/utils";
 import type { UiType } from "../../../i18n/utils";
 import Layout from "../../../layouts/Layout.astro";
+import PostCard from "../../../components/PostCard.astro";
 
 export async function getStaticPaths() {
   const posts = await getBlogPosts();
@@ -19,16 +20,14 @@ const tagsWithPosts = getTagsByLanguage(posts, lang as UiType);
 const tagData = tagsWithPosts.find(t => t.tag === tag);
 ---
 <Layout title={`Tag: ${tag}`} description={`Tag: ${tag}`} lang={lang}>
-  <h1>Tag: {tag}</h1>
+  <h1 class="text-2xl font-bold mb-4">Tag: {tag}</h1>
   {tagData ? (
-    <ul>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {tagData.posts.map(post => (
-        <li>
-          <a href={`/${lang}/blog/${post.blog_slug}`}>{post.data.title}</a>
-        </li>
+        <PostCard post={post} lang={lang} />
       ))}
-    </ul>
+    </div>
   ) : (
-    <p>No posts found for this tag.</p>
+    <div class="alert alert-info">No posts found for this tag.</div>
   )}
 </Layout>

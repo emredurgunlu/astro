@@ -17,7 +17,20 @@ export async function getStaticPaths() {
   heroImage="/blog-placeholder-about.jpg"
   lang={lang}
 >
-  <p>
-    {t.about.text}
-  </p>
+  <section class="hero bg-base-200 rounded-box">
+    <div class="hero-content text-center">
+      <div class="max-w-2xl">
+        <h1 class="text-3xl font-bold">{t.about.title}</h1>
+        <p class="py-4 text-base-content/80">{t.about.description}</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="mt-6">
+    <div class="card bg-base-100 shadow-sm">
+      <div class="card-body">
+        <p>{t.about.text}</p>
+      </div>
+    </div>
+  </div>
 </Layout>

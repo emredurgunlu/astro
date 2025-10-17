@@ -8,17 +8,17 @@ const { href, class: className, ...props } = Astro.props;
 const { pathname } = Astro.url;
 const isActive = href === pathname || href === pathname.replace(/\/$/, '');
 ---
-
-<a href={href} class:list={[className, { active: isActive }]} {...props}>
-	<slot />
+<a
+  href={href}
+  class:list={[
+    // DaisyUI link styles
+    'link link-hover',
+    // Tailwind utilities for active state (no custom CSS)
+    { 'font-bold underline': isActive },
+    className,
+  ]}
+  aria-current={isActive ? 'page' : undefined}
+  {...props}
+>
+  <slot />
 </a>
-<style>
-	a {
-		display: inline-block;
-		text-decoration: none;
-	}
-	a.active {
-		font-weight: bolder;
-		text-decoration: underline;
-	}
-</style>

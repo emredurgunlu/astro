@@ -1,0 +1,30 @@
+---
+import FormattedDate from "./FormattedDate.astro";
+
+interface Props {
+  post: any;
+  lang: string;
+}
+
+const { post, lang } = Astro.props as Props;
+const href = `/${lang}/blog/${post.blog_slug}`;
+---
+
+<a href={href} class="card bg-base-100 shadow-sm hover:shadow-md transition-shadow">
+  <figure>
+    <img src={post.data.heroImage} alt={post.data.title} width="720" height="360" loading="lazy" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">{post.data.title}</h2>
+    <p class="text-sm text-base-content/70">
+      <FormattedDate date={post.data.pubDate} />
+    </p>
+    {post.data.tags && post.data.tags.length > 0 && (
+      <div class="card-actions justify-start">
+        {post.data.tags.map((tag: string) => (
+          <span class="badge badge-ghost">{tag}</span>
+        ))}
+      </div>
+    )}
+  </div>
+</a>

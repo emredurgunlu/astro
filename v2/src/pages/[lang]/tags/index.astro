@@ -16,10 +16,10 @@ const tags = [...new Set(postsForLang.flatMap((post) => post.data.tags || []))];
 const pageTitle = "Tags";
 ---
 <Layout title={pageTitle} description={pageTitle} lang={lang}>
-  <h1>{pageTitle}</h1>
-  <ul>
+  <h1 class="text-2xl font-bold mb-4">{pageTitle}</h1>
+  <div class="flex flex-wrap gap-2">
     {tags.map((tag) => (
-      <li><a href={`/${lang}/tags/${tag}`}>{tag}</a></li>
+      <a href={`/${lang}/tags/${tag}`} class="badge badge-outline">{tag}</a>
     ))}
-  </ul>
+  </div>
 </Layout>

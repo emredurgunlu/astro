@@ -5,7 +5,7 @@ pubDate: 'Jul 01 2022'
 heroImage: '/blog-placeholder-1.jpg'
 author: 'Me'
 lang: 'tr'
-tags: [tutorialabc, astroasd, webdevq]
+tags: [tutorialtr, tutorialabc, astroasd, webdevq]
 ---
 
 Türkçe Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
