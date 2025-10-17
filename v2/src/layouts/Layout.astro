@@ -14,8 +14,7 @@ interface Props {
   updatedDate?: Date;
 }
 
-const { title, description, lang } =
-  Astro.props;
+const { title, description, lang, heroImage, pubDate, updatedDate } = Astro.props as Props;
 
 const t = useTranslations(lang as UiType);
 ---
@@ -23,7 +22,15 @@ const t = useTranslations(lang as UiType);
 <!doctype html>
 <html lang={lang}>
   <head>
-    <BaseHead lang={lang ?? DEFAULT_LANG} title={title} description={description} />
+    <BaseHead
+      lang={lang ?? DEFAULT_LANG}
+      title={title}
+      description={description}
+      image={heroImage}
+      isArticle={!!pubDate}
+      pubDate={pubDate}
+      updatedDate={updatedDate}
+    />
   </head>
   <body>
     <Header title={t.site.title} lang={lang} />

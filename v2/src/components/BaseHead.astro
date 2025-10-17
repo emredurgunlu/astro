@@ -7,14 +7,19 @@ import {
 	DEFAULT_LANG,
 	getLocalizedPathname,
 	type UiType,
+  useTranslations,
 } from "../i18n/utils";
+import JsonLD from "./JsonLD.astro";
 import "../styles/global.css";
 
 interface Props {
-	title: string;
-	description: string;
-	image?: string;
-	lang: string;
+  title: string;
+  description: string;
+  image?: string;
+  lang: string;
+  isArticle?: boolean;
+  pubDate?: Date;
+  updatedDate?: Date;
 }
 
 const canonicalPathname = pathNameIsInLanguage(Astro.url.pathname, DEFAULT_LANG)
@@ -27,15 +32,40 @@ const {
 	title,
 	description,
 	image = "/blog-placeholder-1.jpg",
+  isArticle = false,
+  pubDate,
+  updatedDate,
 } = Astro.props;
 
 const alternateLang = Object.keys(LANGUAGES) as UiType[];;
 const alternateLinks = alternateLang.map((_lang: UiType) => {
-	return {
-		href: new URL(getLocalizedPathname(Astro.url.pathname, _lang), Astro.site),
-		hreflang: _lang,
-	};
+  return {
+    href: new URL(getLocalizedPathname(Astro.url.pathname, _lang), Astro.site),
+    hreflang: _lang,
+  };
 });
+const t = useTranslations(lang as UiType);
+const siteName = t.site.title;
+const logoUrl = new URL('/favicon.svg', Astro.site);
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: siteName,
+  url: String(Astro.site),
+  logo: String(logoUrl),
+  sameAs: [
+    "https://twitter.com/astrodotbuild",
+    "https://youtube.com",
+    "https://facebook.com",
+  ],
+};
+const webSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteName,
+  url: String(Astro.site),
+  inLanguage: lang,
+};
 ---
 
 <!-- Global Metadata -->
@@ -86,11 +116,20 @@ const alternateLinks = alternateLang.map((_lang: UiType) => {
 <meta name="description" content={description} />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
+<meta property="og:type" content={isArticle ? 'article' : 'website'} />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
+{
+  isArticle && (
+    <>
+      {pubDate && <meta property="article:published_time" content={pubDate.toISOString()} />}
+      {updatedDate && <meta property="article:modified_time" content={updatedDate.toISOString()} />}
+      <meta property="og:site_name" content={siteName} />
+    </>
+  )
+}
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
@@ -98,3 +137,7 @@ const alternateLinks = alternateLang.map((_lang: UiType) => {
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- Structured Data: Organization & WebSite -->
+<JsonLD schema={orgSchema} />
+<JsonLD schema={webSchema} />
