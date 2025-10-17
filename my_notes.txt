@@ -18,8 +18,56 @@ https://astro.build/integrations/?search=&categories%5B%5D=toolbar
 https://docs.astro.build/en/guides/images/
 https://docs.astro.build/en/guides/internationalization/
 
+# Icons
 https://freesvgicons.com/
 https://freesvgicons.com/search?q=palette&collectionId=lucide
 
+# SEO
+https://epigra.com/en/blog/seo-trends-in-2025-adaptation-to-algorithm-changes#google-sge-ve-yapay-zeka-destekli-arama-sonuclari
+https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=tr
+
 npm i @astrojs/rss
 daha sonra astro.config.mjs dosyasına site: 'https://example.com', ekle
+
+Google Rich Snippets ve Knowledge Panel 
+⚡ 1. Sayfa Hızı (Site Hızı)
+Google, hızlı yüklenen siteleri daha üst sıralarda gösteriyor.
+
+Yavaş siteler, hem sıralamada hem de kullanıcı memnuniyetinde kayıp yaşar.
+
+📱 2. Mobil Uyumluluk
+Google artık mobil öncelikli indeksleme kullanıyor.
+
+Mobilde kötü görünen siteler sıralamada geri düşer.
+
+🧠 3. İçerik Kalitesi ve Alaka Düzeyi
+Uzmanlık, özgünlük ve kullanıcıya değer sunan içerikler öne çıkar.
+
+AI Overviews ve Featured Snippets gibi alanlarda görünmek için içerik kalitesi şart.
+
+🔗 4. Backlink Kalitesi
+Güvenilir sitelerden gelen bağlantılar hâlâ güçlü bir sıralama sinyali.
+
+Kalitesiz backlink’ler cezaya neden olabilir.
+
+🛠️ 5. Teknik SEO
+Site haritası, robots.txt, canonical etiketler, yapılandırılmış veri gibi teknik detaylar.
+
+Arama motorlarının siteyi daha iyi anlamasını sağlar.
+
+👤 6. Kullanıcı Deneyimi (UX)
+Ziyaretçinin sitede geçirdiği süre, etkileşim oranı, hemen çıkma oranı gibi metrikler.
+
+Google, kullanıcı davranışlarını sıralama için analiz eder.
+
+🌐 7. Domain Otoritesi ve Yaşı
+Eski ve güvenilir domainler genellikle daha iyi sıralanır.
+
+Marka bilinirliği de bu faktörü destekler.
+
+📍 8. Yerel SEO
+Özellikle fiziksel işletmeler için Google My Business, yerel anahtar kelimeler ve yorumlar çok önemli.
+
+📣 9. Sosyal Sinyaller
+Paylaşımlar, beğeniler ve sosyal medya etkileşimleri dolaylı olarak SEO’ya katkı sağlar
+
