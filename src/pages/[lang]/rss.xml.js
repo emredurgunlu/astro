@@ -18,8 +18,8 @@ export async function GET(context) {
 		})
 		.sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 	return rss({
-		title: ui[lang]['site.title'],
-		description: ui[lang]['site.description'],
+		title: ui[lang].site.title,
+		description: ui[lang].site.description,
 		site: context.site,
 		items: posts.map((post) => ({
 			...post.data,
