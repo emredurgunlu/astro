@@ -1,0 +1,10 @@
+{
+  // Worker adı (workers.dev alt alanı için)
+  "name": "astro-v2",
+  // Cloudflare Workers runtime uyumluluk tarihi
+  "compatibility_date": "2025-10-20",
+  // Statik build çıktısını Workers Assets olarak yayınla
+  "assets": {
+    "directory": "./dist"
+  }
+}
