@@ -1,0 +1,21 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { useTranslations, LANGUAGES_KEYS, getLangFromUrl } from "../../i18n/utils";
+
+export async function getStaticPaths() {
+  return LANGUAGES_KEYS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+<Layout title={t.nav.notes} description={t.nav.notes} lang={lang}>
+  <section class="hero bg-base-200 rounded-box">
+    <div class="hero-content text-center">
+      <div class="max-w-2xl">
+        <h1 class="text-3xl font-bold">{t.nav.notes}</h1>
+        <p class="py-4 text-base-content/80">Güncel notlar yakında eklenecek.</p>
+      </div>
+    </div>
+  </section>
+</Layout>

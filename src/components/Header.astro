@@ -18,27 +18,37 @@ const tagsSlug = `${prefix}/tags`;
   <div class="navbar bg-base-100 shadow-sm">
     <div class="navbar-start">
       <div class="dropdown">
-        <div tabindex="0" role="button" class="btn btn-ghost lg:hidden" aria-label="Open menu">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
-          </svg>
-        </div>
-        <ul tabindex="-1" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
-          <li><HeaderLink href={homeSlug}>{t.nav.home}</HeaderLink></li>
-          <li><HeaderLink href={blogSlug}>{t.nav.blog}</HeaderLink></li>
-          <li><HeaderLink href={tagsSlug}>{t.nav.tags}</HeaderLink></li>
-          <li><HeaderLink href={aboutSlug}>{t.nav.about}</HeaderLink></li>
-        </ul>
       </div>
-      <a href={homeSlug} class="btn btn-ghost text-xl">{title}</a>
+      <a href={homeSlug} class="btn btn-ghost text-xl inline-flex items-center gap-2">
+        <img src="/favicon.svg" alt={title} class="w-6 h-6" />
+        <span>{title}</span>
+      </a>
     </div>
 
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
         <li><HeaderLink href={homeSlug}>{t.nav.home}</HeaderLink></li>
+        <li>
+          <details>
+            <summary>{t.nav.practiceAreas}</summary>
+            <ul class="p-2">
+              <li><HeaderLink href={`${prefix}/practice-areas/vehicle-value-loss`}>{t.nav.practiceAreasItems.vehicleValueLoss}</HeaderLink></li>
+              <li><HeaderLink href={`${prefix}/practice-areas/family-law`}>{t.nav.practiceAreasItems.familyLaw}</HeaderLink></li>
+              <li><HeaderLink href={`${prefix}/practice-areas/cybercrimes`}>{t.nav.practiceAreasItems.cybercrimes}</HeaderLink></li>
+              <li><HeaderLink href={`${prefix}/practice-areas/real-estate-zoning`}>{t.nav.practiceAreasItems.realEstateZoningLaw}</HeaderLink></li>
+              <li><HeaderLink href={`${prefix}/practice-areas/inheritance-law`}>{t.nav.practiceAreasItems.inheritanceLaw}</HeaderLink></li>
+              <li><HeaderLink href={`${prefix}/practice-areas/foreigners-citizenship`}>{t.nav.practiceAreasItems.foreignersCitizenshipLaw}</HeaderLink></li>
+              <li><HeaderLink href={`${prefix}/practice-areas/criminal-law`}>{t.nav.practiceAreasItems.criminalLaw}</HeaderLink></li>
+              <li><HeaderLink href={`${prefix}/practice-areas/labor-law`}>{t.nav.practiceAreasItems.laborLaw}</HeaderLink></li>
+              <li><HeaderLink href={`${prefix}/practice-areas/enforcement-bankruptcy`}>{t.nav.practiceAreasItems.enforcementBankruptcyLaw}</HeaderLink></li>
+            </ul>
+          </details>
+        </li>
+        <li><HeaderLink href={`${prefix}/faq`}>{t.nav.faq}</HeaderLink></li>
+        <li><HeaderLink href={`${prefix}/notes`}>{t.nav.notes}</HeaderLink></li>
         <li><HeaderLink href={blogSlug}>{t.nav.blog}</HeaderLink></li>
         <li><HeaderLink href={tagsSlug}>{t.nav.tags}</HeaderLink></li>
-        <li><HeaderLink href={aboutSlug}>{t.nav.about}</HeaderLink></li>
+        <li><HeaderLink href={`${prefix}/contact`}>{t.nav.contact}</HeaderLink></li>
       </ul>
     </div>
 

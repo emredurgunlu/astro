@@ -1,15 +1,28 @@
 export const ui = {
   en: {
     site: {
-      title: "Astro Blog",
+      title: "Uçarer Law and Consultancy",
       description: "Welcome to my website!",
     },
     nav: {
       home: "Home",
-      about: "About",
+      practiceAreas: "Practice Areas",
+      faq: "FAQ",
+      notes: "Latest Notes",
       blog: "Blog",
       tags: "Tags",
-      twitter: "Twitter",
+      contact: "Contact",
+      practiceAreasItems: {
+        vehicleValueLoss: "Vehicle Value Loss",
+        familyLaw: "Family Law",
+        cybercrimes: "Cybercrimes",
+        realEstateZoningLaw: "Real Estate & Zoning Law",
+        inheritanceLaw: "Inheritance Law",
+        foreignersCitizenshipLaw: "Foreigners & Citizenship Law",
+        criminalLaw: "Criminal Law",
+        laborLaw: "Labor Law",
+        enforcementBankruptcyLaw: "Enforcement & Bankruptcy Law"
+      }
     },
     home: {
       welcome: "Welcome to my website",
@@ -51,15 +64,28 @@ export const ui = {
   },
   tr: {
     site: {
-      title: "Astro Blog",
+      title: "Uçarer Hukuk ve Danışmanlık",
       description: "Web siteme hoş geldiniz!",
     },
     nav: {
       home: "Ana Sayfa",
-      about: "Hakkımda",
+      practiceAreas: "Faaliyet Alanları",
+      faq: "S.S.S",
+      notes: "Güncel Notlar",
       blog: "Blog",
       tags: "Etiketler",
-      twitter: "Twitter",
+      contact: "İletişim",
+      practiceAreasItems: {
+        vehicleValueLoss: "Araç Değer Kaybı",
+        familyLaw: "Aile Hukuku",
+        cybercrimes: "Bilişim Suçları",
+        realEstateZoningLaw: "Gayrimenkul ve İmar Hukuku",
+        inheritanceLaw: "Miras Hukuku",
+        foreignersCitizenshipLaw: "Yabancılar ve Vatandaşlık Hukuku",
+        criminalLaw: "Ceza Hukuku",
+        laborLaw: "İş Hukuku",
+        enforcementBankruptcyLaw: "İcra ve İflas Hukuku"
+      }
     },
     home: {
       welcome: "Web siteme hoş geldiniz",
