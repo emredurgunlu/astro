@@ -82,6 +82,22 @@ const webSchema = {
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
 
+{import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION && (
+  <meta name="google-site-verification" content={import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION} />
+)}
+
+{import.meta.env.PUBLIC_GA_ID && (
+  <>
+    <script type="text/partytown" src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA_ID}`}></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);} 
+      gtag('js', new Date());
+      gtag('config', import.meta.env.PUBLIC_GA_ID, { anonymize_ip: true });
+    </script>
+  </>
+)}
+
 <link rel="sitemap" href="/sitemap-index.xml" />
 
 <!-- Font preloads -->

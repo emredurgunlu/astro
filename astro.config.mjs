@@ -3,10 +3,11 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from '@astrojs/sitemap';
+import { partytownSnippet } from '@builder.io/partytown/integration';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
+	site: 'https://my-astro-app.emredurgunlu.workers.dev/',
 	vite: {
 		plugins: [tailwindcss()],
 		server: {
@@ -15,6 +16,6 @@ export default defineConfig({
 			}
 		}
 	},
-	integrations: [mdx(), sitemap()],
+	integrations: [mdx(), sitemap(), partytownSnippet({ forward: ['gtag'] })],
 });
 
