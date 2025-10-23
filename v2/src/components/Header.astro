@@ -51,20 +51,21 @@ const tagsSlug = `${prefix}/tags`;
               blogSlug={blogSlug}
               tagsSlug={tagsSlug}
               practiceMenuClass="menu p-2 bg-base-100 rounded-box shadow"
+              showIcons={true}
             />
             <div class="divider my-2"></div>
             <li class="menu-title">
-              <span>Ayarlar</span>
+              <span>{t.nav.settings}</span>
             </li>
             <li>
               <div class="flex items-center justify-between">
-                <span>Dil</span>
+                <span>{t.nav.language}</span>
                 <LangSelector />
               </div>
             </li>
             <li>
               <div class="flex items-center justify-between">
-                <span>Tema</span>
+                <span>{t.nav.theme}</span>
                 <ThemeSelector />
               </div>
             </li>
@@ -90,6 +91,7 @@ const tagsSlug = `${prefix}/tags`;
             blogSlug={blogSlug}
             tagsSlug={tagsSlug}
             practiceMenuClass="menu p-2 bg-base-100 rounded-box shadow z-50 w-64"
+            showIcons={false}
           />
         </ul>
       </div>
@@ -98,6 +100,7 @@ const tagsSlug = `${prefix}/tags`;
       <div class="hidden lg:flex items-center gap-2">
         <LangSelector />
         <ThemeSelector />
+        <div class="mr-3"></div>
       </div>
     </div>
   </div>

@@ -1,6 +1,5 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
@@ -11,11 +10,12 @@ export default defineConfig({
 	vite: {
 		plugins: [tailwindcss()],
 		server: {
-			watch: {
-				usePolling: true,
-			}
+			watch: { usePolling: true }
 		}
 	},
-	integrations: [mdx(), sitemap(), partytown({ config: { forward: ['gtag'] } })],
+	integrations: [sitemap(), partytown({ config: { forward: ['gtag'] } })],
+	redirects: {
+		'/': '/tr/', // <— root’u her zaman /tr/’e yönlendir
+	},
 });
 

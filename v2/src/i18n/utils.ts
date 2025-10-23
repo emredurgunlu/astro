@@ -7,7 +7,7 @@ export const LANGUAGES = {
 
 export const LANGUAGES_KEYS = Object.keys(LANGUAGES) as UiType[];
 
-export const DEFAULT_LANG = "en" as const;
+export const DEFAULT_LANG = "tr" as const; // <— en yerine tr
 
 export type UiType = keyof typeof LANGUAGES;
 
@@ -63,9 +63,6 @@ export function getLocalizedPathname(pathname: string, lang: UiType) {
   return localized;
 }
 
-// Minimal tag localization: swap trailing language suffix (en| tr)
-// Works for slugs like 'astroen', 'astrotr'
-// If slug doesn't follow this pattern (e.g. 'mdx'), it remains unchanged.
 export function translateTag(tag: string, toLang: UiType): string {
   const match = tag.match(/^(.+?)(en|tr)$/);
   if (!match) return tag;

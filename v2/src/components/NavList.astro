@@ -1,6 +1,15 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
 
+// İkonları import et
+import HomeIcon from "../assets/icons/home.svg";
+import BriefcaseIcon from "../assets/icons/briefcase.svg";
+import HelpIcon from "../assets/icons/help.svg";
+import BookIcon from "../assets/icons/book.svg";
+import TagsIcon from "../assets/icons/tags.svg";
+import MailIcon from "../assets/icons/mail.svg";
+import ScaleIcon from "../assets/icons/scale.svg";
+
 interface Props {
   prefix: string;
   t: any;
@@ -8,6 +17,7 @@ interface Props {
   blogSlug: string;
   tagsSlug: string;
   practiceMenuClass?: string;
+  showIcons?: boolean;
 }
 
 const {
@@ -17,63 +27,130 @@ const {
   blogSlug,
   tagsSlug,
   practiceMenuClass = "menu p-2 bg-base-100 rounded-box shadow",
+  showIcons = false,
 } = Astro.props as Props;
+
+// Menü öğelerini tek bir dizide topla
+const menuItems = [
+  {
+    href: homeSlug,
+    label: t.nav.home,
+    icon: HomeIcon,
+    type: 'link'
+  },
+  {
+    label: t.nav.practiceAreas,
+    icon: BriefcaseIcon,
+    type: 'dropdown',
+    items: [
+      {
+        href: `${blogSlug}/vehicle-value-loss`,
+        label: t.nav.practiceAreasItems.vehicleValueLoss,
+        icon: ScaleIcon
+      },
+      {
+        href: `${blogSlug}/family-law`,
+        label: t.nav.practiceAreasItems.familyLaw,
+        icon: ScaleIcon
+      },
+      {
+        href: `${blogSlug}/cybercrimes`,
+        label: t.nav.practiceAreasItems.cybercrimes,
+        icon: ScaleIcon
+      },
+      {
+        href: `${blogSlug}/real-estate-zoning`,
+        label: t.nav.practiceAreasItems.realEstateZoningLaw,
+        icon: ScaleIcon
+      },
+      {
+        href: `${blogSlug}/inheritance-law`,
+        label: t.nav.practiceAreasItems.inheritanceLaw,
+        icon: ScaleIcon
+      },
+      {
+        href: `${blogSlug}/foreigners-citizenship`,
+        label: t.nav.practiceAreasItems.foreignersCitizenshipLaw,
+        icon: ScaleIcon
+      },
+      {
+        href: `${blogSlug}/criminal-law`,
+        label: t.nav.practiceAreasItems.criminalLaw,
+        icon: ScaleIcon
+      },
+      {
+        href: `${blogSlug}/labor-law`,
+        label: t.nav.practiceAreasItems.laborLaw,
+        icon: ScaleIcon
+      },
+      {
+        href: `${blogSlug}/enforcement-bankruptcy`,
+        label: t.nav.practiceAreasItems.enforcementBankruptcyLaw,
+        icon: ScaleIcon
+      }
+    ]
+  },
+  {
+    href: `${prefix}/faq`,
+    label: t.nav.faq,
+    icon: HelpIcon,
+    type: 'link'
+  },
+  {
+    href: `${prefix}/notes`,
+    label: t.nav.notes,
+    icon: BookIcon,
+    type: 'link'
+  },
+  {
+    href: blogSlug,
+    label: t.nav.blog,
+    icon: BookIcon,
+    type: 'link'
+  },
+  {
+    href: tagsSlug,
+    label: t.nav.tags,
+    icon: TagsIcon,
+    type: 'link'
+  },
+  {
+    href: `${prefix}/contact`,
+    label: t.nav.contact,
+    icon: MailIcon,
+    type: 'link'
+  }
+];
 ---
-<li><HeaderLink href={homeSlug}>{t.nav.home}</HeaderLink></li>
-<li>
-  <details>
-    <summary>{t.nav.practiceAreas}</summary>
-    <ul class={practiceMenuClass}>
-      <li>
-        <HeaderLink href={`${prefix}/practice-areas/vehicle-value-loss`}>
-          {t.nav.practiceAreasItems.vehicleValueLoss}
-        </HeaderLink>
-      </li>
-      <li>
-        <HeaderLink href={`${prefix}/practice-areas/family-law`}>
-          {t.nav.practiceAreasItems.familyLaw}
-        </HeaderLink>
-      </li>
-      <li>
-        <HeaderLink href={`${prefix}/practice-areas/cybercrimes`}>
-          {t.nav.practiceAreasItems.cybercrimes}
-        </HeaderLink>
-      </li>
-      <li>
-        <HeaderLink href={`${prefix}/practice-areas/real-estate-zoning`}>
-          {t.nav.practiceAreasItems.realEstateZoningLaw}
-        </HeaderLink>
-      </li>
-      <li>
-        <HeaderLink href={`${prefix}/practice-areas/inheritance-law`}>
-          {t.nav.practiceAreasItems.inheritanceLaw}
-        </HeaderLink>
-      </li>
-      <li>
-        <HeaderLink href={`${prefix}/practice-areas/foreigners-citizenship`}>
-          {t.nav.practiceAreasItems.foreignersCitizenshipLaw}
-        </HeaderLink>
-      </li>
-      <li>
-        <HeaderLink href={`${prefix}/practice-areas/criminal-law`}>
-          {t.nav.practiceAreasItems.criminalLaw}
-        </HeaderLink>
-      </li>
-      <li>
-        <HeaderLink href={`${prefix}/practice-areas/labor-law`}>
-          {t.nav.practiceAreasItems.laborLaw}
-        </HeaderLink>
-      </li>
-      <li>
-        <HeaderLink href={`${prefix}/practice-areas/enforcement-bankruptcy`}>
-          {t.nav.practiceAreasItems.enforcementBankruptcyLaw}
-        </HeaderLink>
-      </li>
-    </ul>
-  </details>
-</li>
-<li><HeaderLink href={`${prefix}/faq`}>{t.nav.faq}</HeaderLink></li>
-<li><HeaderLink href={`${prefix}/notes`}>{t.nav.notes}</HeaderLink></li>
-<li><HeaderLink href={blogSlug}>{t.nav.blog}</HeaderLink></li>
-<li><HeaderLink href={tagsSlug}>{t.nav.tags}</HeaderLink></li>
-<li><HeaderLink href={`${prefix}/contact`}>{t.nav.contact}</HeaderLink></li>
+
+{menuItems.map((item) => (
+  <li>
+    {item.type === 'link' ? (
+      <HeaderLink href={item.href}>
+        <span class={showIcons ? "inline-flex items-center gap-2" : ""}>
+          {showIcons && <item.icon class="w-4 h-4" />}
+          {item.label}
+        </span>
+      </HeaderLink>
+    ) : (
+      <details>
+        <summary class={showIcons ? "inline-flex items-center gap-2" : ""}>
+          {showIcons && <item.icon class="w-4 h-4" />}
+          {item.label}
+        </summary>
+        <ul class={practiceMenuClass}>
+          {item.items?.map((subItem) => (
+            <li>
+              <HeaderLink href={subItem.href}>
+                <span class={showIcons ? "inline-flex items-center gap-2" : ""}>
+                  {/* {showIcons && <subItem.icon class="w-4 h-4" />} */}
+                  {subItem.label}
+                </span>
+              </HeaderLink>
+            </li>
+          ))}
+        </ul>
+      </details>
+    )}
+  </li>
+))}

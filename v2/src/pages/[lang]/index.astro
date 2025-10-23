@@ -1,7 +1,17 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import {
+  getLangFromUrl,
+  useTranslations,
+  LANGUAGES_KEYS,
+} from "../../i18n/utils";
 
-import { getLangFromUrl, useTranslations, LANGUAGES_KEYS } from "../../i18n/utils";
+import heroImage from "../../assets/images/hero.webp";
+import { Image } from "astro:assets";
+import PhoneIcon from "../../assets/icons/phone.svg";
+import StarIcon from "../../assets/icons/star.svg";
+import instagramImage from "../../assets/images/instagram.webp";
+import whatsappImage from "../../assets/images/whatsapp.webp";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -12,27 +22,211 @@ export async function getStaticPaths() {
 ---
 
 <Layout title={t.site.title} description={t.site.description} lang={lang}>
-  <section class="hero bg-base-200 rounded-box">
-    <div class="hero-content text-center">
-      <div class="max-w-2xl">
-        <h1 class="text-3xl font-bold">{t.home.welcome}</h1>
-        <p class="py-4">{t.home.p1}</p>
-        <p class="py-2">{t.home.p2}</p>
-      </div>
+  {/* Hero Section */}
+  <section class="w-full flex flex-col items-center mb-5">
+    <div
+      class="w-full max-w-[1200px] mx-auto aspect-[1200/365] rounded-3xl overflow-hidden shadow-lg"
+    >
+      <Image
+        src={heroImage}
+        alt="Adalet Görseli"
+        width={1200}
+        height={365}
+        sizes="(min-width:1200px) 1200px, 100vw"
+        loading="eager"
+        class="w-full h-full object-cover object-center"
+      />
+    </div>
+    <div class="px-4 md:px-8 py-3 flex flex-col items-center">
+      <q
+        class="text-xl md:text-2xl lg:text-3xl font-semibold text-center italic mb-2"
+      >
+        {t.home.heroQuote}
+      </q>
     </div>
   </section>
+  <h1 class="text-4xl font-bold text-center mb-5">
+    {t.footer.f1} | {t.site.title}
+  </h1>
+  <p class="text-center text-muted-foreground">
+{t.home.desc}
+  </p>
+  {/* İletişim Bölümü */}
+  <div
+    class="w-full rounded-3xl overflow-hidden shadow-lg mt-3 bg-gradient-to-r from-amber-600/25 via-base-100 to-amber-600/25 dark:from-yellow-600/25 dark:via-base-200 dark:to-yellow-600/25"
+  >
+    <div class="flex flex-col items-center gap-4 py-1">
+      {/* Telefon Numarası */}
+      <a
+        href="tel:+905362191550"
+        aria-label="Telefon ile arayın: +90 536 219 15 50"
+        class="flex items-center gap-3 text-orange-600 font-bold text-2xl md:text-3xl hover:text-orange-700 transition-all duration-300 hover:scale-110 hover:shadow-lg mt-2 animate-bounce"
+      >
+        <PhoneIcon class="w-7 h-7 md:w-8 md:h-8" />
+        +90 536 219 15 50
+      </a>
 
-  <div class="mt-6">
-    <p class="font-semibold">{t.home.p3}</p>
-    <ul class="menu bg-base-100 rounded-box shadow-sm mt-2">
-      <li><span>{t.home.p3_0} <code>src/i18n/ui.ts</code></span></li>
-      <li><span>{t.home.p3_1} <code>src/pages/index.astro</code></span></li>
-      <li><span>{t.home.p3_2} <code>src/pages/[lang]/...</code></span></li>
-      <li><span>{t.home.p3_3} <code>src/components/Header.astro</code></span></li>
-      <li><span>{t.home.p3_4} <code>src/components/Footer.astro</code></span></li>
-      <li><span>{t.home.p3_5} <code>src/pages/blog/</code></span></li>
-      <li><span>{t.home.p3_6} <code>src/layouts/Layout.astro</code></span></li>
-      <li><span>{t.home.p3_7} <code>src/layouts/BlogPost.astro</code></span></li>
-    </ul>
+      {/* Sosyal Medya İkonları */}
+      <div class="flex items-center gap-10 md:gap-12 mb-2">
+        <a
+          href="https://wa.me/905362191550?text=Merhaba,%20Avukatlık%20-%20Danışmanlık%20Hizmeti%20almak%20istiyorum."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="transition-transform hover:scale-110"
+        >
+          <Image src={whatsappImage} alt="whatsapp" width={52} height={52} />
+        </a>
+        <a
+          href="https://www.instagram.com/avukat_yasemin_ucarer/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="transition-transform hover:scale-110"
+        >
+          <Image src={instagramImage} alt="instagram" width={48} height={48} />
+        </a>
+      </div>
+    </div>
   </div>
+
+  <div class="container mx-auto max-w-6xl px-4 py-4">
+    <h2 class="text-2xl font-bold mb-4">{t.nav.practiceAreas}</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        [
+          {
+            slug: "vehicle-value-loss",
+            label: t.nav.practiceAreasItems.vehicleValueLoss,
+          },
+          { slug: "family-law", label: t.nav.practiceAreasItems.familyLaw },
+          { slug: "cybercrimes", label: t.nav.practiceAreasItems.cybercrimes },
+          {
+            slug: "real-estate-zoning",
+            label: t.nav.practiceAreasItems.realEstateZoningLaw,
+          },
+          {
+            slug: "inheritance-law",
+            label: t.nav.practiceAreasItems.inheritanceLaw,
+          },
+          {
+            slug: "foreigners-citizenship",
+            label: t.nav.practiceAreasItems.foreignersCitizenshipLaw,
+          },
+          { slug: "criminal-law", label: t.nav.practiceAreasItems.criminalLaw },
+          { slug: "labor-law", label: t.nav.practiceAreasItems.laborLaw },
+          {
+            slug: "enforcement-bankruptcy",
+            label: t.nav.practiceAreasItems.enforcementBankruptcyLaw,
+          },
+        ].map((item) => (
+          <a
+            href={`/${lang}/blog/${item.slug}`}
+            class="card bg-base-100 shadow-sm hover:shadow-md transition hover:-translate-y-0.5 border rounded-box"
+          >
+            <div class="card-body">
+              <h3 class="card-title text-lg md:text-xl">{item.label}</h3>
+              <div class="card-actions justify-end">
+                <span class="btn btn-sm btn-primary">Detay</span>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+
+  {/* Google Yorumlar Bölümü */}
+  <section class="mt-16">
+    <div class="flex flex-col items-center mb-6">
+      <h2
+        class="text-3xl font-bold text-center flex flex-wrap items-center gap-2"
+      >
+        <span class="ml-2 flex items-center">
+          <span  style={{ color: "#4285F4" }}>G</span>
+          <span  style={{ color: "#EA4335" }}>o</span>
+          <span  style={{ color: "#FBBC05" }}>o</span>
+          <span  style={{ color: "#4285F4" }}>g</span>
+          <span  style={{ color: "#34A853" }}>l</span>
+          <span  style={{ color: "#EA4335" }}>e</span>
+        </span>
+        {t.home.reviews1}
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+      {/* Yorum 1 */}
+      <div class="bg-card rounded-xl shadow p-6 flex flex-col gap-3">
+        <div class="flex items-center gap-2">
+          <span class="font-semibold">Ayten Ayhan</span>
+          <div class="flex ml-2">
+            {
+              [...Array(5)].map(() => (
+                <StarIcon class="w-5 h-5 text-yellow-400 fill-yellow-400" />
+              ))}
+          </div>
+        </div>
+        <p class="text-muted-foreground text-sm">
+          {t.home.reviews2[0]}
+        </p>
+      </div>
+
+      {/* Yorum 2 */}
+      <div class="bg-card rounded-xl shadow p-6 flex flex-col gap-3">
+        <div class="flex items-center gap-2">
+          <span class="font-semibold">Heval Şekerci</span>
+          <div class="flex ml-2">
+            {
+              [...Array(5)].map(() => (
+                <StarIcon class="w-5 h-5 text-yellow-400 fill-yellow-400" />
+              ))}
+          </div>
+        </div>
+        <p class="text-muted-foreground text-sm">
+          {t.home.reviews2[1]}
+        </p>
+      </div>
+
+      {/* Yorum 3 */}
+      <div class="bg-card rounded-xl shadow p-6 flex flex-col gap-3">
+        <div class="flex items-center gap-2">
+          <span class="font-semibold">Demet Özdemir</span>
+          <div class="flex ml-2">
+            {
+              [...Array(5)].map(() => (
+                <StarIcon class="w-5 h-5 text-yellow-400 fill-yellow-400" />
+              ))}
+          </div>
+        </div>
+        <p class="text-muted-foreground text-sm">
+          {t.home.reviews2[2]}
+        </p>
+      </div>
+
+      {/* Yorum 4 */}
+      <div class="bg-card rounded-xl shadow p-6 flex flex-col gap-3">
+        <div class="flex items-center gap-2">
+          <span class="font-semibold">Şemsi Nur Ayışık</span>
+          <div class="flex ml-2">
+            {
+              [...Array(5)].map(() => (
+                <StarIcon class="w-5 h-5 text-yellow-400 fill-yellow-400" />
+              ))}
+          </div>
+        </div>
+        <p class="text-muted-foreground text-sm">
+          {t.home.reviews2[3]}
+        </p>
+      </div>
+    </div>
+
+    <div class="flex justify-center">
+      <a
+        href="https://www.google.com.tr/search?sa=X&sca_esv=d2336463bd812dcd&hl=tr&tbm=lcl&q=Avukat+Yasemin+U%C3%A7arer+Durgunlu+Yorumlar&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDQ3NDewNDM1NbSwNDc3MTcxsdjAyPiKUcOxrDQ7sUQhMrE4NTczTyH08PLEotQiBZfSovTSvJxShcj8otLcnMSiRaxEKwUASpHenHEAAAA&rldimm=11717096551897747448&ved=2ahUKEwjT4KbU2vONAxXRS_EDHdbbNAgQ9fQKegQIRBAF&biw=1912&bih=928&dpr=1#lkt=LocalPoiReviews"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 px-6 py-2 rounded-full text-base font-semibold transition-colors duration-300"
+      >
+        {t.home.viewAllReviews}
+      </a>
+    </div>
+  </section>
 </Layout>
