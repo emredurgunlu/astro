@@ -37,9 +37,9 @@ export default async function LocaleLayout({ children, params }) {
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body>
+      <body suppressHydrationWarning>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <ThemeProvider attribute="class">
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
             <Navbar locale={locale}/>
             <div style={{ position: "fixed", top: 16, right: 16, zIndex: 50 }}>
             </div>
