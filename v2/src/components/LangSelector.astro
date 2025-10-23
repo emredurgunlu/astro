@@ -2,16 +2,20 @@
 import World from '../assets/icons/world.svg';
 import {LANGUAGES,LANGUAGES_KEYS,DEFAULT_LANG} from "../i18n/utils";
 import type {UiType} from "../i18n/utils";
+
+// Benzersiz ID oluştur
+const uniqueId = `lang-selector-${Math.random().toString(36).substr(2, 9)}`;
+const optionsId = `lang-options-${Math.random().toString(36).substr(2, 9)}`;
 ---
 
-<div id="lang-selector" class="dropdown dropdown-end" data-languages={JSON.stringify(LANGUAGES_KEYS)} data-default-lang={DEFAULT_LANG}>
+<div id={uniqueId} class="dropdown dropdown-end lang-selector" data-languages={JSON.stringify(LANGUAGES_KEYS)} data-default-lang={DEFAULT_LANG}>
   <div tabindex="0" role="button" class="btn m-1">
     <World width="24" height="24" />
   </div>
   <ul
     tabindex="0"
     class="dropdown-content menu bg-base-100 rounded-box z-1 w-32 p-2 shadow-sm"
-    id="lang-options"
+    id={optionsId}
   >
     {
       LANGUAGES_KEYS.map((key: UiType) => (
@@ -26,41 +30,46 @@ import type {UiType} from "../i18n/utils";
 <!-- 🔽 Dil seçimi için client-side script -->
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
-    const container = document.getElementById("lang-selector");
-    if (!container) return;
-    const langButtons = container.querySelectorAll(".lang-option");
-    const languages = JSON.parse(container.getAttribute("data-languages"));
-    const defaultLang = container.getAttribute("data-default-lang");
-    const savedLang = localStorage.getItem("preferredLanguage") ?? defaultLang;
+    // Tüm lang-selector sınıfına sahip elementleri bul
+    const containers = document.querySelectorAll(".lang-selector");
+    
+    containers.forEach((container) => {
+      if (!container) return;
+      
+      const langButtons = container.querySelectorAll(".lang-option");
+      const languages = JSON.parse(container.getAttribute("data-languages"));
+      const defaultLang = container.getAttribute("data-default-lang");
+      const savedLang = localStorage.getItem("preferredLanguage") ?? defaultLang;
 
-    // Sayfa yüklenirken kaydedilen dile yönlendir
-    const currentPath = window.location.pathname;
-    const pathParts = currentPath.split('/').filter(part => part !== '');
-    const currentLang = pathParts.length > 0 && languages.includes(pathParts[0]) ? pathParts[0] : defaultLang;
-    const hasLangInPath = pathParts.length > 0 && languages.includes(pathParts[0]);
+      // Sayfa yüklenirken kaydedilen dile yönlendir
+      const currentPath = window.location.pathname;
+      const pathParts = currentPath.split('/').filter(part => part !== '');
+      const currentLang = pathParts.length > 0 && languages.includes(pathParts[0]) ? pathParts[0] : defaultLang;
+      const hasLangInPath = pathParts.length > 0 && languages.includes(pathParts[0]);
 
-    // Yalnızca URL dil içermiyorsa otomatik yönlendir ve her zaman dil prefiksi ekle
-    if (!hasLangInPath && savedLang !== currentLang) {
-      const restParts = hasLangInPath ? pathParts.slice(1) : pathParts;
-      const restPath = restParts.join('/');
-      let newPath = `/${savedLang}`;
-      if (restPath) newPath += `/${restPath}`;
-      window.location.href = newPath;
-      return;
-    }
-
-    langButtons.forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        const selectedLang = btn.getAttribute("data-lang") ?? defaultLang;
-        localStorage.setItem("preferredLanguage", selectedLang);
-        const currentPath = window.location.pathname;
-        const parts = currentPath.split('/').filter(p => p !== '');
-        const restParts = parts.length > 0 && languages.includes(parts[0]) ? parts.slice(1) : parts;
+      // Yalnızca URL dil içermiyorsa otomatik yönlendir ve her zaman dil prefiksi ekle
+      if (!hasLangInPath && savedLang !== currentLang) {
+        const restParts = hasLangInPath ? pathParts.slice(1) : pathParts;
         const restPath = restParts.join('/');
-        let newPath = `/${selectedLang}`;
+        let newPath = `/${savedLang}`;
         if (restPath) newPath += `/${restPath}`;
         window.location.href = newPath;
+        return;
+      }
+
+      langButtons.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          const selectedLang = btn.getAttribute("data-lang") ?? defaultLang;
+          localStorage.setItem("preferredLanguage", selectedLang);
+          const currentPath = window.location.pathname;
+          const parts = currentPath.split('/').filter(p => p !== '');
+          const restParts = parts.length > 0 && languages.includes(parts[0]) ? parts.slice(1) : parts;
+          const restPath = restParts.join('/');
+          let newPath = `/${selectedLang}`;
+          if (restPath) newPath += `/${restPath}`;
+          window.location.href = newPath;
+        });
       });
     });
   });
