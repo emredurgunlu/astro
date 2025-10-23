@@ -22,7 +22,10 @@ export const ui = {
         criminalLaw: "Criminal Law",
         laborLaw: "Labor Law",
         enforcementBankruptcyLaw: "Enforcement & Bankruptcy Law"
-      }
+      },
+      settings: "Settings",
+      language: "Language",
+      theme: "Theme",
     },
     home: {
       welcome: "Welcome to my website",
@@ -85,7 +88,10 @@ export const ui = {
         criminalLaw: "Ceza Hukuku",
         laborLaw: "İş Hukuku",
         enforcementBankruptcyLaw: "İcra ve İflas Hukuku"
-      }
+      },
+      settings: "Ayarlar",
+      language: "Dil",
+      theme: "Tema",
     },
     home: {
       welcome: "Web siteme hoş geldiniz",
