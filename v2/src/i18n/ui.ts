@@ -69,6 +69,17 @@ export const ui = {
 		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
 		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.`,
     },
+    contact: {
+      title: "Contact",
+      descriptionPart1: "You can contact us to learn more about our legal consultancy and law services.",
+      descriptionPart2: "Our working hours are weekdays from 09:00 to 17:00.",
+      descriptionPart3: "It is recommended to schedule an appointment in advance.",
+      contactInfoTitle: "Contact Information",
+      mapTitle: "Location of Our Law Office",
+      phone: "Phone",
+      email: "Email",
+      address: "Address",
+    },
     pagination: {
       first: "First",
       prev: "Previous",
@@ -145,6 +156,17 @@ export const ui = {
 		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
 		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
 		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.`,
+    },
+    contact: {
+      title: "İletişim",
+      descriptionPart1: "Hukuki danışmanlık ve avukatlık hizmetlerimiz hakkında bilgi almak için bizimle iletişime geçebilirsiniz.",
+      descriptionPart2: "Mesai Saatlerimiz hafta içi 09:00-17:00 saatleri arasıdır.",
+      descriptionPart3: "Öncesinde randevu almanız tavsiye olunur.",
+      contactInfoTitle: "İletişim Bilgileri",
+      mapTitle: "Avukatlık Ofisimizin Konumu",
+      phone: "Telefon",
+      email: "E-posta",
+      address: "Adres",
     },
     pagination: {
       first: "İlk",
