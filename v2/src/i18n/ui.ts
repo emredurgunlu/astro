@@ -2,6 +2,7 @@ export const ui = {
   en: {
     site: {
       title: "Uçarer Law and Consultancy",
+      name: "Lawyer Yasemin DURGUNLU",
       description: "Welcome to my website!",
     },
     nav: {
@@ -21,11 +22,22 @@ export const ui = {
         foreignersCitizenshipLaw: "Foreigners & Citizenship Law",
         criminalLaw: "Criminal Law",
         laborLaw: "Labor Law",
-        enforcementBankruptcyLaw: "Enforcement & Bankruptcy Law"
+        enforcementBankruptcyLaw: "Enforcement & Bankruptcy Law",
       },
       settings: "Settings",
       language: "Language",
       theme: "Theme",
+    },
+    footer: {
+      quickLinks: "Quick Links",
+      address:
+        "Mevlana Mah. Çalışkan Sk. Keskin Apt. Floor:3 No:4/5\nKocasinan/KAYSERİ\nNext to Kayseri Courthouse",
+      allRightsReserved: "All rights reserved.",
+      f1: "Kayseri Lawyer",
+      f2: "Kayseri Divorce Lawyer",
+      f3: "Kayseri Criminal Lawyer",
+      f4: "Dissolution of Partnership",
+      f5: "Compensation Law",
     },
     home: {
       welcome: "Welcome to my website",
@@ -68,6 +80,7 @@ export const ui = {
   tr: {
     site: {
       title: "Uçarer Hukuk ve Danışmanlık",
+      name: "Avukat Yasemin DURGUNLU",
       description: "Web siteme hoş geldiniz!",
     },
     nav: {
@@ -87,11 +100,22 @@ export const ui = {
         foreignersCitizenshipLaw: "Yabancılar ve Vatandaşlık Hukuku",
         criminalLaw: "Ceza Hukuku",
         laborLaw: "İş Hukuku",
-        enforcementBankruptcyLaw: "İcra ve İflas Hukuku"
+        enforcementBankruptcyLaw: "İcra ve İflas Hukuku",
       },
       settings: "Ayarlar",
       language: "Dil",
       theme: "Tema",
+    },
+    footer: {
+      quickLinks: "Hızlı Linkler",
+      address:
+        "Mevlana Mah. Çalışkan Sk. Keskin Apt. Kat:3 No:4/5\nKocasinan/KAYSERİ\nKAYSERİ Adliyesi yanı",
+      allRightsReserved: "Tüm hakları saklıdır.",
+      f1: "Kayseri Avukat",
+      f2: "Kayseri Boşanma Avukatı",
+      f3: "Kayseri Ağır Ceza Avukatı",
+      f4: "Ortaklığın Giderilmesi",
+      f5: "Tazminat Hukuku",
     },
     home: {
       welcome: "Web siteme hoş geldiniz",
