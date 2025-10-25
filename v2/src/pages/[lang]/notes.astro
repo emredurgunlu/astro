@@ -8,14 +8,33 @@ export async function getStaticPaths() {
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+// Articles verisini i18n'den çekiyoruz
+const articles = t?.notes?.articles ?? [];
 ---
-<Layout title={t.nav.notes} description={t.nav.notes} lang={lang}>
+<Layout title={t.nav.notes} description={t.notes.description} lang={lang}>
   <section class="hero bg-base-200 rounded-box">
     <div class="hero-content text-center">
       <div class="max-w-2xl">
         <h1 class="text-3xl font-bold">{t.nav.notes}</h1>
-        <p class="py-4 text-base-content/80">Güncel notlar yakında eklenecek.</p>
+        <p class="py-4 text-base-content/80">{t.notes.description}</p>
       </div>
     </div>
   </section>
+
+  <div class="container mx-auto max-w-6xl px-4 py-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {articles.map((article) => (
+        <div class="card bg-base-100 shadow-md hover:shadow-lg transition hover:-translate-y-0.5 hover:border-primary rounded-box border">
+          <div class="card-body">
+            <div class="flex items-start justify-between gap-3">
+              <h3 class="card-title text-lg md:text-xl">{article.title}</h3>
+            </div>
+            <div class="text-xs text-base-content/70">{article.publishDate}</div>
+            <p class="mt-2 text-sm leading-relaxed text-base-content/80">{article.content}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
 </Layout>
