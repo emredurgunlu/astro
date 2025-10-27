@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from '@astrojs/sitemap';
-import partytown from '@astrojs/partytown';
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,7 +11,7 @@ export default defineConfig({
 			watch: { usePolling: true }
 		}
 	},
-	integrations: [sitemap(), partytown({ config: { forward: ['gtag'] } })],
+	integrations: [sitemap()],
 	image: {
 		service: {
 			entrypoint: 'astro/assets/services/sharp',

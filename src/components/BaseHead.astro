@@ -82,19 +82,16 @@ const webSchema = {
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
 
-{import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION && (
-  <meta name="google-site-verification" content={import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION} />
-)}
+{/* Search Console meta doğrulaması kullanılmıyorsa gereksiz */}
 
 {import.meta.env.PUBLIC_GA_ID && (
   <>
-    <script type="text/partytown" src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA_ID}`}></script>
-    <script type="text/partytown">
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA_ID}`}></script>
+    <script is:inline define:vars={{ gaId: import.meta.env.PUBLIC_GA_ID }}>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);} 
       gtag('js', new Date());
-      // GA kimliğini build sırasında HTML'e gömerek import.meta kullanımını kaldırıyoruz
-      gtag('config', "{import.meta.env.PUBLIC_GA_ID}", { anonymize_ip: true });
+      gtag('config', gaId, { anonymize_ip: true });
     </script>
   </>
 )}

@@ -10,7 +10,6 @@
     "clean": "powershell Remove-Item -Recurse -Force node_modules, package-lock.json, dist, .astro"
   },
   "dependencies": {
-    "@astrojs/partytown": "^2.1.4",
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.6.0",
     "@tailwindcss/vite": "^4.1.14",
