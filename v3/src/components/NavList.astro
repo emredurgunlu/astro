@@ -1,0 +1,104 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+
+// İkonları import et
+import HomeIcon from "../assets/icons/home.svg";
+import BriefcaseIcon from "../assets/icons/briefcase.svg";
+import HelpIcon from "../assets/icons/help.svg";
+import BookIcon from "../assets/icons/book.svg";
+import TagsIcon from "../assets/icons/tags.svg";
+import MailIcon from "../assets/icons/mail.svg";
+import ScaleIcon from "../assets/icons/scale.svg";
+
+interface Props {
+  prefix: string;
+  t: any;
+  homeSlug: string;
+  blogSlug: string;
+  tagsSlug: string;
+  practiceMenuClass?: string;
+  showIcons?: boolean;
+}
+
+const {
+  prefix,
+  t,
+  homeSlug,
+  blogSlug,
+  tagsSlug,
+  practiceMenuClass = "menu p-2 bg-base-100 rounded-box shadow",
+  showIcons = false,
+} = Astro.props as Props;
+
+// Menü öğelerini tek bir dizide topla
+const menuItems = [
+  {
+    href: homeSlug,
+    label: t.nav.home,
+    icon: HomeIcon,
+    type: "link",
+  },
+  {
+    label: t.site.title,
+    icon: BriefcaseIcon,
+    type: "link",
+  },
+  {
+    href: `${prefix}/architecturalDesign`,
+    label: t.nav.architecturalDesign,
+    icon: HelpIcon,
+    type: "link",
+  },
+  {
+    href: `${prefix}/architecturalCompetitions`,
+    label: t.nav.architecturalCompetitions,
+    icon: BookIcon,
+    type: "link",
+  },
+  {
+    href: `${prefix}/architecturalTours`,
+    label: t.nav.architecturalTours,
+    icon: BookIcon,
+    type: "link",
+  },
+  {
+    href: `${prefix}/crew`,
+    label: t.nav.crew,
+    icon: BookIcon,
+    type: "link",
+  },
+  {
+    href: blogSlug,
+    label: t.nav.blog,
+    icon: BookIcon,
+    type: "link",
+  },
+  {
+    href: tagsSlug,
+    label: t.nav.tags,
+    icon: TagsIcon,
+    type: "link",
+  },
+  {
+    href: `${prefix}/contact`,
+    label: t.nav.contact,
+    icon: MailIcon,
+    type: "link",
+  },
+];
+---
+
+{
+  menuItems.map((item) => (
+    <li>
+      {
+        <HeaderLink href={item.href}>
+          <span class={showIcons ? "inline-flex items-center gap-2" : ""}>
+            {showIcons && <item.icon class="w-4 h-4" />}
+            {item.label}
+          </span>
+        </HeaderLink>
+      }
+    </li>
+  ))
+}

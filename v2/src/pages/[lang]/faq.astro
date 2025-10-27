@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { useTranslations, LANGUAGES_KEYS, getLangFromUrl } from "../../i18n/utils";
 import officeImage from "../../assets/images/kayseri-avukat-buro-gorsel.webp";
+import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
   return LANGUAGES_KEYS.map((lang) => ({ params: { lang } }));
@@ -15,9 +16,12 @@ const faqs = (t?.FaqPage ?? []) as ReadonlyArray<{ readonly q: string; readonly 
   <section class="hero rounded-box">
     <div class="hero-content text-center">
       <div class="max-w-2xl w-full">
-        <img
-          src={officeImage.src}
+        <Image
+          src={officeImage}
           alt="Kayseri Avukat Büro Görseli"
+          width={791}
+          height={527}
+          format="webp"
           class="rounded-lg shadow-lg object-cover mx-auto w-full max-w-[791px]"
           loading="lazy"
         />

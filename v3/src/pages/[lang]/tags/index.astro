@@ -1,0 +1,25 @@
+---
+import { getBlogPosts } from "../../../content/config";
+import { LANGUAGES } from "../../../i18n/utils";
+import Layout from "../../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  return Object.keys(LANGUAGES).map(lang => ({
+    params: { lang }
+  }));
+}
+
+const { lang } = Astro.params;
+const allPosts = await getBlogPosts();
+const postsForLang = allPosts.filter((post) => post.data.lang === lang);
+const tags = [...new Set(postsForLang.flatMap((post) => post.data.tags || []))];
+const pageTitle = "Tags";
+---
+<Layout title={pageTitle} description={pageTitle} lang={lang}>
+  <h1 class="text-2xl font-bold mb-4">{pageTitle}</h1>
+  <div class="flex flex-wrap gap-2">
+    {tags.map((tag) => (
+      <a href={`/${lang}/tags/${tag}`} class="badge badge-outline">{tag}</a>
+    ))}
+  </div>
+</Layout>

@@ -4,6 +4,7 @@ import Linkedin from "../assets/icons/linkedin.svg";
 import Instagram from "../assets/icons/instagram.svg";
 import Youtube from "../assets/icons/youtube.svg";
 import { DEFAULT_LANG, useTranslations } from "../i18n/utils";
+import { Image } from "astro:assets";
 
 const today = new Date();
 const { lang } = Astro.props;
@@ -14,7 +15,15 @@ const prefix = `/${currentLang}`;
 
 <footer class="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
   <aside>
-    <img src={logo.src} alt="Logo" class="w-16" />
+    <Image 
+      src={logo} 
+      alt="Logo" 
+      width={64} 
+      height={59} 
+      format="webp"
+      class="w-16" 
+      loading="lazy"
+    />
     <p>
       {t.site.title}
       <br />
@@ -22,7 +31,7 @@ const prefix = `/${currentLang}`;
     </p>
   </aside>
   <nav>
-    <h6 class="footer-title">{t.footer.quickLinks}</h6>
+    <p class="footer-title">{t.footer.quickLinks}</p>
     <a class="link link-hover" href="#">{t.footer.f1}</a>
     <a class="link link-hover" href="#">{t.footer.f2}</a>
     <a class="link link-hover" href="#">{t.footer.f3}</a>
@@ -30,11 +39,11 @@ const prefix = `/${currentLang}`;
     <a class="link link-hover" href="#">{t.footer.f5}</a>
   </nav>
   <nav>
-    <h6 class="footer-title">{t.nav.contact}</h6>
+    <p class="footer-title">{t.nav.contact}</p>
     <p class="max-w-xs whitespace-pre-line">{t.footer.address}</p>
   </nav>
   <nav>
-    <h6 class="footer-title"></h6>
+    
     <a class="link link-hover" href={`${prefix}/faq`}>{t.nav.faq}</a>
     <a class="link link-hover" href={`${prefix}/blog`}>{t.nav.blog}</a>
     <a class="link link-hover" href={`${prefix}/contact`}>{t.nav.contact}</a>
