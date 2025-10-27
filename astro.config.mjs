@@ -14,7 +14,16 @@ export default defineConfig({
 	},
 	integrations: [sitemap(), partytown({ config: { forward: ['gtag'] } })],
 	redirects: {
-		'/': '/tr/', // <— root’u her zaman /tr/’e yönlendir
+		'/': '/tr/', // <— root'u her zaman /tr/'e yönlendir
+	},
+	image: {
+		service: {
+			entrypoint: 'astro/assets/services/sharp',
+			config: {
+				limitInputPixels: false,
+			}
+		},
+		remotePatterns: [{ protocol: "https" }],
 	},
 });
 

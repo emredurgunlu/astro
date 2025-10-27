@@ -32,7 +32,9 @@ export async function getStaticPaths() {
         alt="Adalet Görseli"
         width={1200}
         height={365}
-        sizes="(min-width:1200px) 1200px, 100vw"
+        widths={[380, 768, 1200]}
+        sizes="(max-width: 768px) 380px, (max-width: 1200px) 768px, 1200px"
+        format="webp"
         loading="eager"
         class="w-full h-full object-cover object-center"
       />
