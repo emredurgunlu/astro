@@ -12,9 +12,45 @@ import PhoneIcon from "../../assets/icons/phone.svg";
 import StarIcon from "../../assets/icons/star.svg";
 import instagramImage from "../../assets/images/instagram.webp";
 import whatsappImage from "../../assets/images/whatsapp.webp";
+import { getBlogPosts } from "../../content/config";
+import type { ImageMetadata } from "astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+// Blog yazılarından faaliyet alanları için görsel ve etiketleri çekeceğiz
+const _posts = await getBlogPosts();
+const practiceSlugs = [
+  "vehicle-value-loss",
+  "family-law",
+  "cybercrimes",
+  "real-estate-zoning",
+  "inheritance-law",
+  "foreigners-citizenship",
+  "criminal-law",
+  "labor-law",
+  "enforcement-bankruptcy",
+];
+type PracticeItem = {
+  slug: string;
+  title: string;
+  description: string;
+  heroImage?: ImageMetadata;
+  tags: string[];
+};
+
+const practiceItems: PracticeItem[] = practiceSlugs.flatMap((slug) => {
+  const post = _posts.find((p) => p.blog_slug === slug && (p.data.lang ?? lang) === lang);
+  return post
+    ? [{
+        slug,
+        title: post.data.title,
+        description: post.data.description,
+        heroImage: post.data.heroImage,
+        tags: post.data.tags ?? [],
+      }]
+    : [];
+});
 
 export async function getStaticPaths() {
   return LANGUAGES_KEYS.map((lang) => ({ params: { lang } }));
@@ -32,10 +68,13 @@ export async function getStaticPaths() {
         alt="Adalet Görseli"
         width={1200}
         height={365}
-        widths={[380, 768, 1200]}
-        sizes="(max-width: 768px) 380px, (max-width: 1200px) 768px, 1200px"
+        widths={[360, 540, 720, 768, 1024, 1200]}
+        sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 2rem), 1200px"
         format="webp"
+        quality={70}
         loading="eager"
+        fetchpriority="high"
+        decoding="async"
         class="w-full h-full object-cover object-center"
       />
     </div>
@@ -90,43 +129,44 @@ export async function getStaticPaths() {
     </div>
   </div>
 
+  {/* Faaliyet Alanları Bölümü */}
   <div class="container mx-auto max-w-6xl px-4 py-4">
     <h2 class="text-2xl font-bold mb-4">{t.nav.practiceAreas}</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {
-        [
-          {
-            slug: "vehicle-value-loss",
-            label: t.nav.practiceAreasItems.vehicleValueLoss,
-          },
-          { slug: "family-law", label: t.nav.practiceAreasItems.familyLaw },
-          { slug: "cybercrimes", label: t.nav.practiceAreasItems.cybercrimes },
-          {
-            slug: "real-estate-zoning",
-            label: t.nav.practiceAreasItems.realEstateZoningLaw,
-          },
-          {
-            slug: "inheritance-law",
-            label: t.nav.practiceAreasItems.inheritanceLaw,
-          },
-          {
-            slug: "foreigners-citizenship",
-            label: t.nav.practiceAreasItems.foreignersCitizenshipLaw,
-          },
-          { slug: "criminal-law", label: t.nav.practiceAreasItems.criminalLaw },
-          { slug: "labor-law", label: t.nav.practiceAreasItems.laborLaw },
-          {
-            slug: "enforcement-bankruptcy",
-            label: t.nav.practiceAreasItems.enforcementBankruptcyLaw,
-          },
-        ].map((item) => (
+        practiceItems.map((item) => (
           <a
             href={`/${lang}/blog/${item.slug}`}
-            class="card bg-base-100 shadow-sm hover:shadow-md transition hover:-translate-y-0.5 border rounded-box"
+            class="group card bg-base-100 border rounded-box overflow-hidden shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg"
           >
+            <figure class="relative">
+              {item.heroImage && (
+                <Image
+                  src={item.heroImage}
+                  alt={item.title}
+                  widths={[360, 720]}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  format="webp"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-40 object-cover"
+                />
+              )}
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+            </figure>
             <div class="card-body">
-              <h3 class="card-title text-lg md:text-xl">{item.label}</h3>
-              <div class="card-actions justify-end">
+              <h3 class="card-title text-lg md:text-xl">{item.title}</h3>
+              {item.description && (
+                <p class="text-sm text-base-content/70 line-clamp-2">{item.description}</p>
+              )}
+              {item.tags.length > 0 && (
+                <div class="flex flex-wrap gap-2 mt-2">
+                  {item.tags.slice(0, 6).map((tag) => (
+                    <span class="badge badge-outline">{tag}</span>
+                  ))}
+                </div>
+              )}
+              <div class="card-actions justify-center mt-3">
                 <span class="btn btn-sm btn-primary">Detay</span>
               </div>
             </div>
