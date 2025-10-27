@@ -3,6 +3,7 @@ import { ui } from "./ui";
 export const LANGUAGES = {
   en: "English",
   tr: "Türkçe",
+  de: "Deutsch",
 } as const;
 
 export const LANGUAGES_KEYS = Object.keys(LANGUAGES) as UiType[];
