@@ -93,7 +93,8 @@ const webSchema = {
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);} 
       gtag('js', new Date());
-      gtag('config', import.meta.env.PUBLIC_GA_ID, { anonymize_ip: true });
+      // GA kimliğini build sırasında HTML'e gömerek import.meta kullanımını kaldırıyoruz
+      gtag('config', "{import.meta.env.PUBLIC_GA_ID}", { anonymize_ip: true });
     </script>
   </>
 )}
