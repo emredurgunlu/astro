@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { useTranslations, LANGUAGES_KEYS, getLangFromUrl } from "../../i18n/utils";
+import officeImage from "../../assets/images/kayseri-avukat-buro-gorsel.webp";
 
 export async function getStaticPaths() {
   return LANGUAGES_KEYS.map((lang) => ({ params: { lang } }));
@@ -8,14 +9,42 @@ export async function getStaticPaths() {
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const faqs = (t?.FaqPage ?? []) as ReadonlyArray<{ readonly q: string; readonly a: string }>;
 ---
 <Layout title={t.nav.faq} description={t.nav.faq} lang={lang}>
-  <section class="hero bg-base-200 rounded-box">
+  <section class="hero rounded-box">
     <div class="hero-content text-center">
-      <div class="max-w-2xl">
-        <h1 class="text-3xl font-bold">{t.nav.faq}</h1>
-        <p class="py-4 text-base-content/80">FAQ içerikleri yakında eklenecek.</p>
+      <div class="max-w-2xl w-full">
+        <img
+          src={officeImage.src}
+          alt="Kayseri Avukat Büro Görseli"
+          class="rounded-lg shadow-lg object-cover mx-auto w-full max-w-[791px]"
+          loading="lazy"
+        />
+        <h1 class="text-3xl font-bold mt-6">{t.nav.faq}</h1>
       </div>
     </div>
   </section>
+
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    {faqs.length === 0 ? (
+      <div role="alert" class="alert alert-info">
+        İçerikler yakında eklenecek.
+      </div>
+    ) : (
+      <div class="space-y-3">
+        {faqs.map((item, index) => (
+          <div class="collapse collapse-arrow bg-base-100 rounded-box border border-base-300 shadow-sm">
+            <input type="radio" name={`faq-accordion-${lang}`} checked={index === 0} />
+            <div class="collapse-title text-lg font-medium">
+              {item.q}
+            </div>
+            <div class="collapse-content text-base text-base-content/80">
+              <p>{item.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
 </Layout>

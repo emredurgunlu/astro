@@ -1,60 +1,107 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
+import Scale from "../assets/icons/scale.svg";
 import LangSelector from "./LangSelector.astro";
-import ThemeSelector from './ThemeSelector.astro';
+import ThemeSelector from "./ThemeSelector.astro";
 import { DEFAULT_LANG, useTranslations } from "../i18n/utils";
+import NavList from "./NavList.astro";
 const { lang, title } = Astro.props;
 
-const currentLang = (lang ?? DEFAULT_LANG);
+const currentLang = lang ?? DEFAULT_LANG;
 const t = useTranslations(currentLang);
 const prefix = `/${currentLang}`;
 const homeSlug = `${prefix}`;
 const blogSlug = `${prefix}/blog`;
-const aboutSlug = `${prefix}/about`;
 const tagsSlug = `${prefix}/tags`;
 ---
 
 <header>
-  <div class="navbar bg-base-100 shadow-sm">
-    <div class="navbar-start">
-      <div class="dropdown">
+  <div class="bg-base-100 shadow-sm">
+    <div class="flex items-center justify-between">
+      <!-- Sol -->
+      <div class="flex items-center">
+        <div class="dropdown">
+          <div
+            tabindex="0"
+            role="button"
+            aria-label="Open menu"
+            class="btn btn-ghost lg:hidden"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </div>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-64"
+          >
+            <NavList
+              prefix={prefix}
+              t={t}
+              homeSlug={homeSlug}
+              blogSlug={blogSlug}
+              tagsSlug={tagsSlug}
+              practiceMenuClass="menu p-2 bg-base-100 rounded-box shadow"
+              showIcons={true}
+            />
+            <div class="divider my-2"></div>
+            <li class="menu-title">
+              <span>{t.nav.settings}</span>
+            </li>
+            <li>
+              <div class="flex items-center justify-between">
+                <span>{t.nav.language}</span>
+                <LangSelector />
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center justify-between">
+                <span>{t.nav.theme}</span>
+                <ThemeSelector />
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <a
+          href={homeSlug}
+          class="btn btn-ghost text-xl inline-flex items-center gap-2"
+        >
+          <Scale width="24" height="24" />
+          <span>{title}</span>
+        </a>
       </div>
-      <a href={homeSlug} class="btn btn-ghost text-xl inline-flex items-center gap-2">
-        <img src="/favicon.svg" alt={title} class="w-6 h-6" />
-        <span>{title}</span>
-      </a>
-    </div>
 
-    <div class="navbar-center hidden lg:flex">
-      <ul class="menu menu-horizontal px-1">
-        <li><HeaderLink href={homeSlug}>{t.nav.home}</HeaderLink></li>
-        <li>
-          <details>
-            <summary>{t.nav.practiceAreas}</summary>
-            <ul class="p-2">
-              <li><HeaderLink href={`${prefix}/practice-areas/vehicle-value-loss`}>{t.nav.practiceAreasItems.vehicleValueLoss}</HeaderLink></li>
-              <li><HeaderLink href={`${prefix}/practice-areas/family-law`}>{t.nav.practiceAreasItems.familyLaw}</HeaderLink></li>
-              <li><HeaderLink href={`${prefix}/practice-areas/cybercrimes`}>{t.nav.practiceAreasItems.cybercrimes}</HeaderLink></li>
-              <li><HeaderLink href={`${prefix}/practice-areas/real-estate-zoning`}>{t.nav.practiceAreasItems.realEstateZoningLaw}</HeaderLink></li>
-              <li><HeaderLink href={`${prefix}/practice-areas/inheritance-law`}>{t.nav.practiceAreasItems.inheritanceLaw}</HeaderLink></li>
-              <li><HeaderLink href={`${prefix}/practice-areas/foreigners-citizenship`}>{t.nav.practiceAreasItems.foreignersCitizenshipLaw}</HeaderLink></li>
-              <li><HeaderLink href={`${prefix}/practice-areas/criminal-law`}>{t.nav.practiceAreasItems.criminalLaw}</HeaderLink></li>
-              <li><HeaderLink href={`${prefix}/practice-areas/labor-law`}>{t.nav.practiceAreasItems.laborLaw}</HeaderLink></li>
-              <li><HeaderLink href={`${prefix}/practice-areas/enforcement-bankruptcy`}>{t.nav.practiceAreasItems.enforcementBankruptcyLaw}</HeaderLink></li>
-            </ul>
-          </details>
-        </li>
-        <li><HeaderLink href={`${prefix}/faq`}>{t.nav.faq}</HeaderLink></li>
-        <li><HeaderLink href={`${prefix}/notes`}>{t.nav.notes}</HeaderLink></li>
-        <li><HeaderLink href={blogSlug}>{t.nav.blog}</HeaderLink></li>
-        <li><HeaderLink href={tagsSlug}>{t.nav.tags}</HeaderLink></li>
-        <li><HeaderLink href={`${prefix}/contact`}>{t.nav.contact}</HeaderLink></li>
-      </ul>
-    </div>
+      <!-- Orta -->
+      <div class="hidden lg:flex flex-1 justify-center">
+        <ul class="menu menu-horizontal px-1">
+          <NavList
+            prefix={prefix}
+            t={t}
+            homeSlug={homeSlug}
+            blogSlug={blogSlug}
+            tagsSlug={tagsSlug}
+            practiceMenuClass="menu p-2 bg-base-100 rounded-box shadow z-50 w-64"
+            showIcons={false}
+          />
+        </ul>
+      </div>
 
-    <div class="navbar-end gap-2">
-      <LangSelector />
-      <ThemeSelector />
+      <!-- Sağ -->
+      <div class="hidden lg:flex items-center gap-2">
+        <LangSelector />
+        <ThemeSelector />
+        <div class="mr-3"></div>
+      </div>
     </div>
   </div>
 </header>
