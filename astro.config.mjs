@@ -6,21 +6,10 @@ import partytown from '@astrojs/partytown';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://astro-65l.pages.dev/',
-	build: {
-		inlineStylesheets: 'auto',
-	},
 	vite: {
 		plugins: [tailwindcss()],
 		server: {
 			watch: { usePolling: true }
-		},
-		build: {
-			cssCodeSplit: false,
-			rollupOptions: {
-				output: {
-					manualChunks: undefined,
-				}
-			}
 		}
 	},
 	integrations: [sitemap(), partytown({ config: { forward: ['gtag'] } })],
