@@ -116,6 +116,19 @@ const webSchema = {
 	crossorigin
 />
 
+{/* Google Analytics kullanıyorsanız GTM preconnect gerekli */}
+{import.meta.env.PUBLIC_GA_ID && (
+  <>
+    <!-- DNS prefetch for Google Analytics -->
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    <!-- Preconnect to Google Tag Manager for gtag.js -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  </>
+)}
+
+<!-- DNS prefetch for fonts -->
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
