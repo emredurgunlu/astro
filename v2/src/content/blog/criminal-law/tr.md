@@ -12,6 +12,8 @@ tags:
   - "İnfaz"
   - "İstinaf"
   - "Temyiz"
+  - "Gezi"
+  - "Gezi1"
 heroImage: "./ceza.webp"  # <— image() ile relative asset
 ---
 

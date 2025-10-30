@@ -10,6 +10,8 @@ tags:
   - "Blockchain Teknolojisi"
   - "Kripto para"
   - "İnternet Dolandırıcılığı"
+  - "Gezi"
+  - "Gezi2"
 heroImage: "./bilisim.webp"
 ---
 

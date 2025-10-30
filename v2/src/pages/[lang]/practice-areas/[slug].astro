@@ -34,7 +34,7 @@ const keyBySlug = {
 } as const;
 
 const title =
-  t.nav.practiceAreasItems[keyBySlug[slug as keyof typeof keyBySlug]] ?? "Practice Area";
+  t[`nav.practiceAreasItems.${keyBySlug[slug as keyof typeof keyBySlug]}`] ?? "Practice Area";
 ---
 <Layout title={title} description={title} lang={lang}>
   <section class="hero bg-base-200 rounded-box">

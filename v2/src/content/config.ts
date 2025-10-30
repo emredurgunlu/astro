@@ -1,5 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 const blog = defineCollection({
 	// Type-check frontmatter using a schema
@@ -18,14 +19,16 @@ const blog = defineCollection({
 
 export const collections = { blog };
 
-export async function getBlogPosts() {
-	const posts = await getCollection('blog');
+export type BlogPostWithSlug = CollectionEntry<"blog"> & { blog_slug: string };
 
-	return posts.map((post) => {
-		const blog_slug = post.slug.split('/')[0];
-		return {
-			...post,
-			blog_slug
-		}
-	})
+export async function getBlogPosts(): Promise<BlogPostWithSlug[]> {
+    const posts = await getCollection('blog');
+
+    return posts.map((post) => {
+        const blog_slug = post.slug.split('/')[0];
+        return {
+            ...post,
+            blog_slug
+        } as BlogPostWithSlug;
+    });
 }

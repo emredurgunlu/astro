@@ -8,7 +8,7 @@ import HelpIcon from "../assets/icons/help.svg";
 import BookIcon from "../assets/icons/book.svg";
 import TagsIcon from "../assets/icons/tags.svg";
 import MailIcon from "../assets/icons/mail.svg";
-import ScaleIcon from "../assets/icons/scale.svg";
+import TitleIcon from "../assets/icons/title.svg";
 
 interface Props {
   prefix: string;
@@ -34,89 +34,89 @@ const {
 const menuItems = [
   {
     href: homeSlug,
-    label: t.nav.home,
+    label: t['nav.home'],
     icon: HomeIcon,
     type: 'link'
   },
   {
-    label: t.nav.practiceAreas,
+    label: t['nav.practiceAreas'],
     icon: BriefcaseIcon,
     type: 'dropdown',
     items: [
       {
         href: `${blogSlug}/vehicle-value-loss`,
-        label: t.nav.practiceAreasItems.vehicleValueLoss,
-        icon: ScaleIcon
+        label: t['nav.practiceAreasItems.vehicleValueLoss'],
+        icon: TitleIcon
       },
       {
         href: `${blogSlug}/family-law`,
-        label: t.nav.practiceAreasItems.familyLaw,
-        icon: ScaleIcon
+        label: t['nav.practiceAreasItems.familyLaw'],
+        icon: TitleIcon
       },
       {
         href: `${blogSlug}/cybercrimes`,
-        label: t.nav.practiceAreasItems.cybercrimes,
-        icon: ScaleIcon
+        label: t['nav.practiceAreasItems.cybercrimes'],
+        icon: TitleIcon
       },
       {
         href: `${blogSlug}/real-estate-zoning`,
-        label: t.nav.practiceAreasItems.realEstateZoningLaw,
-        icon: ScaleIcon
+        label: t['nav.practiceAreasItems.realEstateZoningLaw'],
+        icon: TitleIcon
       },
       {
         href: `${blogSlug}/inheritance-law`,
-        label: t.nav.practiceAreasItems.inheritanceLaw,
-        icon: ScaleIcon
+        label: t['nav.practiceAreasItems.inheritanceLaw'],
+        icon: TitleIcon
       },
       {
         href: `${blogSlug}/foreigners-citizenship`,
-        label: t.nav.practiceAreasItems.foreignersCitizenshipLaw,
-        icon: ScaleIcon
+        label: t['nav.practiceAreasItems.foreignersCitizenshipLaw'],
+        icon: TitleIcon
       },
       {
         href: `${blogSlug}/criminal-law`,
-        label: t.nav.practiceAreasItems.criminalLaw,
-        icon: ScaleIcon
+        label: t['nav.practiceAreasItems.criminalLaw'],
+        icon: TitleIcon
       },
       {
         href: `${blogSlug}/labor-law`,
-        label: t.nav.practiceAreasItems.laborLaw,
-        icon: ScaleIcon
+        label: t['nav.practiceAreasItems.laborLaw'],
+        icon: TitleIcon
       },
       {
         href: `${blogSlug}/enforcement-bankruptcy`,
-        label: t.nav.practiceAreasItems.enforcementBankruptcyLaw,
-        icon: ScaleIcon
+        label: t['nav.practiceAreasItems.enforcementBankruptcyLaw'],
+        icon: TitleIcon
       }
     ]
   },
   {
     href: `${prefix}/faq`,
-    label: t.nav.faq,
+    label: t['nav.faq'],
     icon: HelpIcon,
     type: 'link'
   },
   {
     href: `${prefix}/notes`,
-    label: t.nav.notes,
+    label: t['nav.notes'],
     icon: BookIcon,
     type: 'link'
   },
   {
     href: blogSlug,
-    label: t.nav.blog,
+    label: t['nav.blog'],
     icon: BookIcon,
     type: 'link'
   },
   {
     href: tagsSlug,
-    label: t.nav.tags,
+    label: t['nav.tags'],
     icon: TagsIcon,
     type: 'link'
   },
   {
     href: `${prefix}/contact`,
-    label: t.nav.contact,
+    label: t['nav.contact'],
     icon: MailIcon,
     type: 'link'
   }

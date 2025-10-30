@@ -10,6 +10,8 @@ tags:
   - "Blockchain Technology"
   - "Cryptocurrency"
   - "Internet Fraud"
+  - "Gezi"
+  - "Gezi2"
 heroImage: "./bilisim.webp"
 ---
 

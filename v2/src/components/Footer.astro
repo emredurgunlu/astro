@@ -25,28 +25,28 @@ const prefix = `/${currentLang}`;
       loading="lazy"
     />
     <p>
-      {t.site.title}
+      {t['site.title']}
       <br />
-      {t.site.name}
+      {t['site.name']}
     </p>
   </aside>
   <nav>
-    <p class="footer-title">{t.footer.quickLinks}</p>
-    <a class="link link-hover" href="#">{t.footer.f1}</a>
-    <a class="link link-hover" href="#">{t.footer.f2}</a>
-    <a class="link link-hover" href="#">{t.footer.f3}</a>
-    <a class="link link-hover" href="#">{t.footer.f4}</a>
-    <a class="link link-hover" href="#">{t.footer.f5}</a>
+    <p class="footer-title">{t['footer.quickLinks']}</p>
+    <a class="link link-hover" href="#">{t['footer.f1']}</a>
+    <a class="link link-hover" href="#">{t['footer.f2']}</a>
+    <a class="link link-hover" href="#">{t['footer.f3']}</a>
+    <a class="link link-hover" href="#">{t['footer.f4']}</a>
+    <a class="link link-hover" href="#">{t['footer.f5']}</a>
   </nav>
   <nav>
-    <p class="footer-title">{t.nav.contact}</p>
-    <p class="max-w-xs whitespace-pre-line">{t.footer.address}</p>
+    <p class="footer-title">{t['nav.contact']}</p>
+    <p class="max-w-xs whitespace-pre-line">{t['footer.address']}</p>
   </nav>
   <nav>
     
-    <a class="link link-hover" href={`${prefix}/faq`}>{t.nav.faq}</a>
-    <a class="link link-hover" href={`${prefix}/blog`}>{t.nav.blog}</a>
-    <a class="link link-hover" href={`${prefix}/contact`}>{t.nav.contact}</a>
+    <a class="link link-hover" href={`${prefix}/faq`}>{t['nav.faq']}</a>
+    <a class="link link-hover" href={`${prefix}/blog`}>{t['nav.blog']}</a>
+    <a class="link link-hover" href={`${prefix}/contact`}>{t['nav.contact']}</a>
   </nav>
 </footer>
 
@@ -55,7 +55,7 @@ const prefix = `/${currentLang}`;
 >
   <aside class="grid-flow-col items-center">
     <p>
-      Copyright © {today.getFullYear()} - Designed by e2dnext - {t.footer.allRightsReserved}
+      Copyright © {today.getFullYear()} - Designed by e2dnext - {t['footer.allRightsReserved']}
     </p>
   </aside>
   <nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">

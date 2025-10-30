@@ -45,7 +45,7 @@ const alternateLinks = alternateLang.map((_lang: UiType) => {
   };
 });
 const t = useTranslations(lang as UiType);
-const siteName = t.site.title;
+const siteName = t['site.title'];
 const logoUrl = new URL('/favicon.svg', Astro.site);
 const orgSchema = {
   "@context": "https://schema.org",

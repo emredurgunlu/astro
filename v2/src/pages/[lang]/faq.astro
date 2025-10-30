@@ -10,9 +10,9 @@ export async function getStaticPaths() {
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const faqs = (t?.FaqPage ?? []) as ReadonlyArray<{ readonly q: string; readonly a: string }>;
+const faqs = (t?.["FaqPage"] ?? []) as ReadonlyArray<{ readonly q: string; readonly a: string }>;
 ---
-<Layout title={t.nav.faq} description={t.nav.faq} lang={lang}>
+<Layout title={t['nav.faq']} description={t['nav.faq']} lang={lang}>
   <section class="hero rounded-box">
     <div class="hero-content text-center">
       <div class="max-w-2xl w-full">
@@ -25,7 +25,7 @@ const faqs = (t?.FaqPage ?? []) as ReadonlyArray<{ readonly q: string; readonly 
           class="rounded-lg shadow-lg object-cover mx-auto w-full max-w-[791px]"
           loading="lazy"
         />
-        <h1 class="text-3xl font-bold mt-6">{t.nav.faq}</h1>
+        <h1 class="text-3xl font-bold mt-6">{t['nav.faq']}</h1>
       </div>
     </div>
   </section>

@@ -1,0 +1,48 @@
+{
+  "site.title": "KOTA",
+  "site.titleLong": "Kolektif Tasarım Atölyesi",
+  "site.name": "Beyza Ertek",
+  "site.description": "Collective Design Atelier — Interior architecture and design services.",
+
+  "nav.home": "Home",
+  "nav.architecturalDesign": "Architectural Design",
+  "nav.architecturalCompetitions": "Architectural Competitions",
+  "nav.architecturalTours": "Architectural Tours",
+  "nav.crew": "Crew Member",
+  "nav.blog": "Blog",
+  "nav.tags": "Tags",
+  "nav.contact": "Contact",
+  "nav.settings": "Settings",
+  "nav.language": "Language",
+  "nav.theme": "Theme",
+
+  "footer.quickLinks": "Quick Links",
+  "footer.address": "Mevlana Neighborhood, Çalışkan Street, Keskin Apartment, Floor 3, No: 4/5\nÜmraniye / İSTANBUL",
+  "footer.allRightsReserved": "All rights reserved.",
+  "footer.f1": "Sound insulation",
+  "footer.f2": "Villa Design",
+  "footer.f3": "Housing Complex Design",
+  "footer.f4": "Interior Design",
+  "footer.f5": "Wall decoration",
+
+  "home.heroQuote": "Transform Your Spaces into Art",
+  "home.desc": "Collective Design Atelier offers interior architecture and design solutions that balance aesthetics and function. We provide design and implementation services for residential, office, and commercial projects.",
+  "home.desc": "Interior architecture can renovate not only your home but all kinds of living spaces from your office to your store. The right design adds aesthetics and functionality to your space, enhancing your quality of life. Moreover, while creating comfortable and inspiring areas that contribute to your personal development, the innovative designs you discover during your travels can offer you new ideas. Every space can soothe your soul and renew you through design.",
+
+  "contact.title": "Contact",
+  "contact.descriptionPart1": "You can contact us to learn more about our interior design and architectural services.",
+  "contact.descriptionPart2": "Our working hours are weekdays from 09:00 to 17:00.",
+  "contact.descriptionPart3": "It is recommended to schedule an appointment in advance.",
+  "contact.contactInfoTitle": "Contact Information",
+  "contact.mapTitle": "Location of Our Interior architecture office",
+  "contact.phone": "Phone",
+  "contact.email": "Email",
+  "contact.address": "Address",
+
+  "pagination.first": "First",
+  "pagination.prev": "Previous",
+  "pagination.next": "Next",
+  "pagination.last": "Last",
+
+  "page": "Page"
+}

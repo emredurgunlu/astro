@@ -1,0 +1,49 @@
+{
+  "site.title": "KOTA",
+  "site.titleLong": "Kolektif Tasarım Atölyesi",
+  "site.name": "Beyza Ertek",
+  "site.description": "Kolektif Tasarım Atölyesi — İç mimarlık ve tasarım hizmetleri.",
+
+  "nav.home": "Ana Sayfa",
+  "nav.architecturalDesign": "Mimari Tasarım",
+  "nav.architecturalCompetitions": "Mimari Yarışmalar",
+  "nav.architecturalTours": "Mimari Geziler",
+  "nav.crew": "Ekip Arkadaşı",
+  "nav.blog": "Blog",
+  "nav.tags": "Etiketler",
+  "nav.contact": "İletişim",
+  "nav.settings": "Ayarlar",
+  "nav.language": "Dil",
+  "nav.theme": "Tema",
+
+  "footer.quickLinks": "Hızlı Linkler",
+  "footer.address": "Mevlana Mah. Çalışkan Sk. Keskin Apt. Kat:3 No:4/5\nÜmraniye / İSTANBUL",
+  "footer.allRightsReserved": "Tüm hakları saklıdır.",
+  "footer.f1": "Ses yalıtımı",
+  "footer.f2": "Villa Tasarımı",
+  "footer.f3": "Site Tasarımı",
+  "footer.f4": "İç Mekân Tasarımı",
+  "footer.f5": "Duvar dekorasyonu",
+
+  "home.heroQuote": "Mekanlarınızı Sanata Dönüştürün",
+
+  "home.desc": "Kolektif Tasarım Atölyesi, iç mimarlık ve tasarım alanında mekânlarınıza özgün ve işlevsel çözümler sunar. Estetik ve kullanım dengesini gözeten yaklaşımımızla konut, ofis ve ticari projelerde tasarım ve uygulama hizmeti veriyoruz.",
+  "home.desc": "İç mimarlık, sadece evinizi değil, ofisinizden mağazanıza kadar her türlü yaşam alanınızı yenileyebilir. Doğru tasarım, mekanınıza estetik ve işlevsellik katarak yaşam kalitenizi artırır. Ayrıca, kişisel gelişiminize katkı sağlayacak rahat ve ilham verici alanlar yaratırken, seyahatlerinizde keşfettiğiniz yenilikçi tasarımlar da size yeni fikirler sunar. Her mekan, tasarım sayesinde ruhunuzu dinlendirebilir ve sizi yenileyebilir.",
+
+  "contact.title": "İletişim",
+  "contact.descriptionPart1": "İç mimarlık ve tasarım hizmetlerimiz hakkında daha fazla bilgi almak için bizimle iletişime geçebilirsiniz.",
+  "contact.descriptionPart2": "Mesai Saatlerimiz hafta içi 09:00-17:00 saatleri arasıdır.",
+  "contact.descriptionPart3": "Öncesinde randevu almanız tavsiye olunur.",
+  "contact.contactInfoTitle": "İletişim Bilgileri",
+  "contact.mapTitle": "İç Mimarlık Ofisimizin Konumu",
+  "contact.phone": "Telefon",
+  "contact.email": "E-posta",
+  "contact.address": "Adres",
+
+  "pagination.first": "İlk",
+  "pagination.prev": "Önceki",
+  "pagination.next": "Sonraki",
+  "pagination.last": "Son",
+
+  "page": "Sayfa"
+}

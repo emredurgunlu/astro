@@ -13,13 +13,14 @@ import StarIcon from "../../assets/icons/star.svg";
 import instagramImage from "../../assets/images/instagram.svg";
 import whatsappImage from "../../assets/images/whatsapp.svg";
 import { getBlogPosts } from "../../content/config";
+import type { BlogPostWithSlug } from "../../content/config";
 import type { ImageMetadata } from "astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 // Blog yazılarından faaliyet alanları için görsel ve etiketleri çekeceğiz
-const _posts = await getBlogPosts();
+const _posts: BlogPostWithSlug[] = await getBlogPosts();
 const practiceSlugs = [
   "vehicle-value-loss",
   "family-law",
@@ -57,7 +58,7 @@ export async function getStaticPaths() {
 }
 ---
 
-<Layout title={t.site.title} description={t.site.description} lang={lang}>
+<Layout title={t['site.title']} description={t['site.description']} lang={lang}>
   {/* Hero Section */}
   <section class="w-full flex flex-col items-center mb-5">
     <div
@@ -82,15 +83,15 @@ export async function getStaticPaths() {
       <q
         class="text-xl md:text-2xl lg:text-3xl font-semibold text-center italic mb-2"
       >
-        {t.home.heroQuote}
+        {t['home.heroQuote']}
       </q>
     </div>
   </section>
   <h1 class="text-4xl font-bold text-center mb-5">
-    {t.footer.f1} | {t.site.title}
+    {t['footer.f1']} | {t['site.title']}
   </h1>
   <p class="text-center text-muted-foreground">
-{t.home.desc}
+{t['home.desc']}
   </p>
   {/* İletişim Bölümü */}
   <div
@@ -131,7 +132,7 @@ export async function getStaticPaths() {
 
   {/* Faaliyet Alanları Bölümü */}
   <div class="container mx-auto max-w-6xl px-4 py-4">
-    <h2 class="text-2xl font-bold mb-4">{t.nav.practiceAreas}</h2>
+    <h2 class="text-2xl font-bold mb-4">{t['nav.practiceAreas']}</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {
         practiceItems.map((item) => (
@@ -190,7 +191,7 @@ export async function getStaticPaths() {
           <span  style={{ color: "#34A853" }}>l</span>
           <span  style={{ color: "#EA4335" }}>e</span>
         </span>
-        {t.home.reviews1}
+        {t['home.reviews1']}
       </h2>
     </div>
 
@@ -207,7 +208,7 @@ export async function getStaticPaths() {
           </div>
         </div>
         <p class="text-muted-foreground text-sm">
-          {t.home.reviews2[0]}
+          {t['home.reviews2'][0]}
         </p>
       </div>
 
@@ -223,7 +224,7 @@ export async function getStaticPaths() {
           </div>
         </div>
         <p class="text-muted-foreground text-sm">
-          {t.home.reviews2[1]}
+          {t['home.reviews2'][1]}
         </p>
       </div>
 
@@ -239,7 +240,7 @@ export async function getStaticPaths() {
           </div>
         </div>
         <p class="text-muted-foreground text-sm">
-          {t.home.reviews2[2]}
+          {t['home.reviews2'][2]}
         </p>
       </div>
 
@@ -255,7 +256,7 @@ export async function getStaticPaths() {
           </div>
         </div>
         <p class="text-muted-foreground text-sm">
-          {t.home.reviews2[3]}
+          {t['home.reviews2'][3]}
         </p>
       </div>
     </div>
@@ -267,7 +268,7 @@ export async function getStaticPaths() {
         rel="noopener noreferrer"
         class="inline-flex items-center justify-center border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 px-6 py-2 rounded-full text-base font-semibold transition-colors duration-300"
       >
-        {t.home.viewAllReviews}
+        {t['home.viewAllReviews']}
       </a>
     </div>
   </section>

@@ -12,6 +12,8 @@ tags:
   - "Enforcement"
   - "Appeal"
   - "Cassation"
+  - "Gezi"
+  - "Gezi1"
 heroImage: "./ceza.webp"  # <— image() ile relative asset
 ---
 
