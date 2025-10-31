@@ -1,3 +1,4 @@
+
 import rss from '@astrojs/rss';
 import { getBlogPosts } from '../../content/config';
 import { ui } from '../../i18n/ui';
