@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* react-json-view input overrides for better contrast */
+.react-json-view input,
+.react-json-view textarea,
+.react-json-view select {
+  background-color: #f9fafb !important; /* light gray */
+  color: #111827 !important; /* dark text */
+  border: 1px solid #d1d5db !important; /* neutral border */
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+
+.react-json-view input::placeholder,
+.react-json-view textarea::placeholder {
+  color: #6b7280 !important; /* placeholder gray */
+}
+
+.react-json-view label {
+  color: #374151 !important; /* label color */
+}
+
+.react-json-view .variable-editor {
+  background-color: #f3f4f6 !important; /* editor row background */
+}
+
+.react-json-view input:focus,
+.react-json-view textarea:focus,
+.react-json-view select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #3b82f6; /* focus ring */
+  border-color: #3b82f6 !important;
+}
