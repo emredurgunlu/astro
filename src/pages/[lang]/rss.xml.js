@@ -1,7 +1,7 @@
 import rss from '@astrojs/rss';
 import { getBlogPosts } from '../../content/config';
 import { ui } from '../../i18n/ui';
-import { LANGUAGES_KEYS } from '../../i18n/utils';
+import { LANGUAGES_KEYS, DEFAULT_LANG } from '../../i18n/utils';
 
 export function getStaticPaths() {
 	const paths = LANGUAGES_KEYS.map((lang) => ({
@@ -18,8 +18,8 @@ export async function GET(context) {
 		})
 		.sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 	return rss({
-		title: ui[lang].site.title,
-		description: ui[lang].site.description,
+		title: ui[lang]?.["site.title"] ?? ui[DEFAULT_LANG]["site.title"],
+		description: ui[lang]?.["site.description"] ?? ui[DEFAULT_LANG]["site.description"],
 		site: context.site,
 		items: posts.map((post) => ({
 			...post.data,
