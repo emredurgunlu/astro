@@ -2,7 +2,7 @@
 title: "Criminal Law"
 description: "Legal services in criminal cases, arrest, enforcement, and criminal law."
 pubDate: 2024-01-07
-lang: "en"
+lang: "de"
 author: "Uçarer Law and Consultancy"
 tags:
   - "Imprisonment Conviction"

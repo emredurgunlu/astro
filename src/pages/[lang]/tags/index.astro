@@ -19,7 +19,7 @@ const pageTitle = "Tags";
   <h1 class="text-2xl font-bold mb-4">{pageTitle}</h1>
   <div class="flex flex-wrap gap-2">
     {tags.map((tag) => (
-      <a href={`/${lang}/tags/${tag}`} class="badge badge-outline">{tag}</a>
+      <a href={`/${lang}/tags/${tag.toLocaleLowerCase(lang)}`} class="badge badge-outline">{tag}</a>
     ))}
   </div>
 </Layout>

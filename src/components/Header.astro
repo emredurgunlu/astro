@@ -1,5 +1,5 @@
 ---
-import Scale from "../assets/icons/scale.svg";
+import Title from "../assets/icons/title.svg";
 import LangSelector from "./LangSelector.astro";
 import ThemeSelector from "./ThemeSelector.astro";
 import { DEFAULT_LANG, useTranslations } from "../i18n/utils";
@@ -55,17 +55,17 @@ const tagsSlug = `${prefix}/tags`;
             />
             <div class="divider my-2"></div>
             <li class="menu-title">
-              <span>{t.nav.settings}</span>
+              <span>{t['nav.settings']}</span>
             </li>
             <li>
               <div class="flex items-center justify-between">
-                <span>{t.nav.language}</span>
+                <span>{t['nav.language']}</span>
                 <LangSelector />
               </div>
             </li>
             <li>
               <div class="flex items-center justify-between">
-                <span>{t.nav.theme}</span>
+                <span>{t['nav.theme']}</span>
                 <ThemeSelector />
               </div>
             </li>
@@ -76,7 +76,7 @@ const tagsSlug = `${prefix}/tags`;
           href={homeSlug}
           class="btn btn-ghost text-xl inline-flex items-center gap-2"
         >
-          <Scale width="24" height="24" />
+          <Title width="24" height="24" />
           <span>{title}</span>
         </a>
       </div>

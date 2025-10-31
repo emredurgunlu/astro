@@ -1,5 +1,6 @@
 ---
 import { getBlogPosts } from "../../../content/config";
+import type { CollectionEntry } from "astro:content";
 import PostCard from "../../../components/PostCard.astro";
 import Layout from "../../../layouts/Layout.astro";
 import { useTranslations, type UiType, LANGUAGES_KEYS } from "../../../i18n/utils";
@@ -13,7 +14,7 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
   const _posts = await getBlogPosts();
   return LANGUAGES_KEYS.flatMap((lang) => {
     const posts_filtered = _posts
-      ?.filter((blog) => {
+      ?.filter((blog: CollectionEntry<"blog">) => {
         return blog?.data?.lang === lang;
       })
       .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -38,47 +39,47 @@ const { page } = Astro.props;
         {
           page.url.first ? (
             <a href={page.url.first} class="join-item btn btn-sm">
-              {t.pagination.first}
+              {t['pagination.first']}
             </a>
           ) : (
             <button class="join-item btn btn-sm btn-disabled" disabled>
-              {t.pagination.first}
+              {t['pagination.first']}
             </button>
           )
         }
         {
           page.url.prev ? (
             <a href={page.url.prev} class="join-item btn btn-sm">
-              {t.pagination.prev}
+              {t['pagination.prev']}
             </a>
           ) : (
             <button class="join-item btn btn-sm btn-disabled" disabled>
-              {t.pagination.prev}
+              {t['pagination.prev']}
             </button>
           )
         }
         <span class="join-item btn btn-sm btn-ghost">
-          {t.page} {page.currentPage}/{page.lastPage}
+          {t['page']} {page.currentPage}/{page.lastPage}
         </span>
         {
           page.url.next ? (
             <a href={page.url.next} class="join-item btn btn-sm">
-              {t.pagination.next}
+              {t['pagination.next']}
             </a>
           ) : (
             <button class="join-item btn btn-sm btn-disabled" disabled>
-              {t.pagination.next}
+              {t['pagination.next']}
             </button>
           )
         }
         {
           page.url.last ? (
             <a href={page.url.last} class="join-item btn btn-sm">
-              {t.pagination.last}
+              {t['pagination.last']}
             </a>
           ) : (
             <button class="join-item btn btn-sm btn-disabled" disabled>
-              {t.pagination.last}
+              {t['pagination.last']}
             </button>
           )
         }

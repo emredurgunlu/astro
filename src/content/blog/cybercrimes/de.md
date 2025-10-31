@@ -2,7 +2,7 @@
 title: "Cybercrimes"
 description: "Legal services in cybercrime, internet fraud, and protection of personal data."
 pubDate: 2024-01-03
-lang: "en"
+lang: "de"
 author: "Uçarer Law and Consultancy"
 tags:
   - "Social Media"
