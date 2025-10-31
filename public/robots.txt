@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://my-astro-app.emredurgunlu.workers.dev/sitemap-index.xml
+Sitemap: https://astro-65l.pages.dev/sitemap-index.xml
