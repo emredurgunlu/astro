@@ -84,16 +84,41 @@ const webSchema = {
 
 {/* Search Console meta doğrulaması kullanılmıyorsa gereksiz */}
 {import.meta.env.PUBLIC_GA_ID && (
-  <>
-    <script async src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA_ID}`}></script>
-    <script is:inline define:vars={{ gaId: import.meta.env.PUBLIC_GA_ID }}>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);} 
-      gtag('js', new Date());
-      gtag('config', gaId, { anonymize_ip: true });
-    </script>
-  </>
+  <script is:inline define:vars={{ gaId: import.meta.env.PUBLIC_GA_ID }}>
+    (function(){
+      try {
+        if (!gaId) return;
+        const loadGA = () => {
+          try {
+            const s = document.createElement('script');
+            s.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+            s.async = true;
+            s.onload = () => {
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){window.dataLayer.push(arguments);} 
+              gtag('js', new Date());
+              gtag('config', gaId, { anonymize_ip: true, transport_type: 'beacon' });
+            };
+            document.head.appendChild(s);
+          } catch {}
+        };
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadGA, { timeout: 2000 });
+        } else {
+          window.addEventListener('load', loadGA);
+        }
+      } catch {}
+    })();
+  </script>
 )}
+
+<!-- Preconnect/DNS Prefetch for GA endpoints to reduce connection latency -->
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+<link rel="preconnect" href="https://region1.google-analytics.com" crossorigin />
+<link rel="dns-prefetch" href="https://region1.google-analytics.com" />
+<link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+<link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
 <link rel="sitemap" href="/sitemap-index.xml" />
 

@@ -145,9 +145,11 @@ export async function getStaticPaths() {
                 <Image
                   src={item.heroImage}
                   alt={item.title}
+                  height={160}
                   widths={[360, 720]}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   format="webp"
+                  quality={75}
                   loading="lazy"
                   decoding="async"
                   class="w-full h-40 object-cover"
